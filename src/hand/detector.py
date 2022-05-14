@@ -1,3 +1,4 @@
+from src.common.constant import PURPLE
 from src.hand.finger import *
 import mediapipe as mp
 import cv2
@@ -35,15 +36,15 @@ class HandDetector:
                     self.mpDraw.draw_landmarks(img, handLms, self.mpHands.HAND_CONNECTIONS)
         return img
 
-    def getPosition(self, img, handNo=0, draw=True, radius=15, color=(255, 0, 255)):
+    def getPosition(self, img, handNo=0, draw=True, radius=15, color=PURPLE):
         if self.processResults is None:
             self.processResults = self.hands.process(img)
-        self.lms = []
 
+        self.lms = []
+        h, w, c = img.shape
         if self.processResults.multi_hand_landmarks:
             myHand = self.processResults.multi_hand_landmarks[handNo]
             for id, lm in enumerate(myHand.landmark):
-                h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
                 self.lms.append([id, cx, cy])
                 if draw:

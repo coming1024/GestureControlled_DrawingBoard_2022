@@ -5,6 +5,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
+from src.common.base import *
 from src.image.detector import *
 from src.image.draw import *
 from src.ui.window import *
