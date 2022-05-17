@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>0</y>
+      <width>281</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>保存</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_3">
+    <property name="geometry">
+     <rect>
+      <x>1630</x>
+      <y>0</y>
+      <width>291</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>橡皮</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>130</y>
+      <width>1501</width>
+      <height>881</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>                                            画板</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>411</width>
+      <height>1021</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_22">
+    <property name="geometry">
+     <rect>
+      <x>1030</x>
+      <y>0</y>
+      <width>321</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>颜色</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_25">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>100</y>
+      <width>101</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>画笔颜色1</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_26">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>270</y>
+      <width>101</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>画笔颜色2</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_27">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>450</y>
+      <width>101</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>画笔颜色3</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
