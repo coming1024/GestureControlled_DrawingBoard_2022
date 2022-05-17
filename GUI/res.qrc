@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>GUI-rsc/关闭.png</file>
+    <file>GUI-rsc/最大化.png</file>
+    <file>GUI-rsc/最小化.png</file>
+  </qresource>
+</RCC>

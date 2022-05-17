@@ -97,8 +97,8 @@ QPushButton:hover
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/Minimize-2.png</normaloff>:/icons/icons/Minimize-2.png</iconset>
+              <iconset resource="res.qrc">
+               <normaloff>:/icons/GUI-rsc/最小化.png</normaloff>:/icons/GUI-rsc/最小化.png</iconset>
              </property>
             </widget>
            </item>
@@ -114,8 +114,8 @@ QPushButton:hover
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/最大化.png</normaloff>:/icons/icons/最大化.png</iconset>
+              <iconset resource="res.qrc">
+               <normaloff>:/icons/GUI-rsc/最大化.png</normaloff>:/icons/GUI-rsc/最大化.png</iconset>
              </property>
             </widget>
            </item>
@@ -127,12 +127,15 @@ QPushButton:hover
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="text">
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/关闭1.png</normaloff>:/icons/icons/关闭1.png</iconset>
+              <iconset resource="res.qrc">
+               <normaloff>:/icons/GUI-rsc/关闭.png</normaloff>:/icons/GUI-rsc/关闭.png</iconset>
              </property>
              <property name="autoRepeatDelay">
               <number>300</number>
@@ -226,7 +229,7 @@ QPushButton:hover
   </action>
  </widget>
  <resources>
-  <include location="../GUI素材库/rsc.qrc"/>
+  <include location="res.qrc"/>
  </resources>
  <connections>
   <connection>

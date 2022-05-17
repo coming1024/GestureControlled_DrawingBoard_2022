@@ -149,4 +149,4 @@ class Ui_MainWindow(object):
         self.actiont.setText(_translate("MainWindow", "退出"))
         self.actionshux.setText(_translate("MainWindow", "属性"))
         self.actiong.setText(_translate("MainWindow", "关于画板"))
-import rsc_rc
+# import rsc_rc
