@@ -1,16 +1,37 @@
-from src.common.constant import PURPLE
-from src.hand.finger import *
 import mediapipe as mp
-import cv2
+
+from src.hand.hand import *
+
+class LeftHand(Hand):
+    def __init__(self):
+        super().__init__()
+        self.tag=HandTag.LEFT
+
+    def judgeCurve(self,finger):
+        var =fingerMap.get(finger)
+        if finger==0:
+            return True if self.lms[var][1]<self.lms[var-1][1] else False
+        return True if self.lms[var][2]>self.lms[var-2][2] else False
+
+
+class RightHand(Hand):
+    def __init__(self):
+        super().__init__()
+        self.tag=HandTag.RIGHT
+
+    def judgeCurve(self, finger):
+        var = fingerMap.get(finger)
+        if finger==0:
+            return True if self.lms[var][1]>self.lms[var-1][1] else False
+        return True if self.lms[var][2]>self.lms[var-2][2] else False
 
 
 class HandDetector:
 
     def __init__(self, mode=False, maxHands=2, modelComplexity=1, detectionCon=0.5, trackCon=0.5):
-
-        self.state = None
-        self.lms = None
         self.processResults = None
+        self.leftHand=LeftHand()
+        self.rightHand=RightHand()
 
         self.mode = mode
         self.maxHands = maxHands
@@ -26,7 +47,6 @@ class HandDetector:
                                         self.trackCon)
         self.mpDraw = mp.solutions.drawing_utils
 
-    # draw the image myHand
     def drawHands(self, img, draw=True):
         self.processResults = self.hands.process(img)
 
@@ -36,56 +56,46 @@ class HandDetector:
                     self.mpDraw.draw_landmarks(img, handLms, self.mpHands.HAND_CONNECTIONS)
         return img
 
-    def getPosition(self, img, handNo=0, draw=True, radius=15, color=PURPLE):
+    def initPosition(self, img):
         if self.processResults is None:
             self.processResults = self.hands.process(img)
 
-        self.lms = []
         h, w, c = img.shape
-        if self.processResults.multi_hand_landmarks:
-            myHand = self.processResults.multi_hand_landmarks[handNo]
-            for id, lm in enumerate(myHand.landmark):
-                cx, cy = int(lm.x * w), int(lm.y * h)
-                self.lms.append([id, cx, cy])
-                if draw:
-                    cv2.circle(img, (cx, cy), radius, color, cv2.FILLED)
-
-        return self.lms
-
-    def getFigures(self):
-        curveList = []
-        if len(self.lms) != 0:
-            for i in range(0, 5):
-                if self.judgeCurve(i):
-                    curveList.append(0)
+        pResult = self.processResults
+        if pResult.multi_hand_landmarks:
+            for myHand in pResult.multi_hand_landmarks:
+                handNo, result = judgeHand(myHand, w, h)
+                if handNo == HandTag.LEFT:
+                    self.leftHand.lms = result
                 else:
-                    curveList.append(1)
-        return curveList
+                    self.rightHand.lms = result
 
-        # 判断某根手指是否折叠
-    def judgeCurve(self, figure, handNo="right"):
-        var = fingerMap.get(figure)
-        if figure == 0:
-            if handNo == "left" and self.lms[var][1] < self.lms[var - 1][1]:
-                return True
-            elif handNo == "right" and self.lms[var][1] > self.lms[var - 1][1]:
-                return True
-            return False
-        elif self.lms[var][2] > self.lms[var - 2][2]:
-            return True
-        return False
+    # def getPosition(self, img, handNo=0, draw=True, radius=15, color=PURPLE):
+    #     if self.processResults is None:
+    #         self.processResults = self.hands.process(img)
+    #
+    #     h, w, c = img.shape
+    #
+    #     self.leftLandMark=[]
+    #     self.rightLandMark=[]
+    #
+    #     pResult=self.processResults
+    #     if pResult.multi_hand_landmarks:
+    #         for judgeHand in pResult.multi_handedness:
+    #             result = str(judgeHand).split("\n")
+    #             index= int(result[1].split(":")[1].strip())
+    #             label =result[3].split(":")[1].strip()
+    #             print(index,label)
+    #             if len(pResult.multi_hand_landmarks)>index:
+    #                 myHand = pResult.multi_hand_landmarks[index]
+    #                 for id, lm in enumerate(myHand.landmark):
+    #                     cx, cy = int(lm.x * w), int(lm.y * h)
+    #                     if label == "Left":
+    #                         self.leftLandMark.append([id, cx, cy])
+    #                     else:
+    #                         self.rightLandMark.append([id, cx, cy])
+    #                     if draw:
+    #                         cv2.circle(img, (cx, cy), radius, color, cv2.FILLED)
+    #     return self.rightLandMark
 
-    def getFirst(self):
-        return self.lms[fingerMap.get(Finger.First)]
 
-    def getSecond(self):
-        return self.lms[fingerMap.get(Finger.Second)]
-
-    def getThird(self):
-        return self.lms[fingerMap.get(Finger.Third)]
-
-    def getFourth(self):
-        return self.lms[fingerMap.get(Finger.Fourth)]
-
-    def getFifth(self):
-        return self.lms[fingerMap.get(Finger.Fifth)]

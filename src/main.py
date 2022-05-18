@@ -16,14 +16,37 @@ stopRectangle = [1, 1, 0, 0, 1]
 triangle = [1, 1, 1, 0, 0]
 stop = [0, 1, 1, 0, 0]
 
+greenColor=[0,1,0,0,0]
+purpleColor=[0,1,1,0,0]
+blueColor=[0,1,1,1,0]
+
+
+def usePen(img, leftHand):
+    leftFingers=leftHand.getFingers()
+
+    if leftFingers is not None and len(leftFingers)!=0:
+        if operator.eq(leftFingers,greenColor):
+            print("green")
+            PEN.penColor=GREEN
+        elif operator.eq(leftFingers,purpleColor):
+            print("purple")
+            PEN.penColor=PURPLE
+        elif operator.eq(leftFingers,blueColor):
+            print("blue")
+            PEN.penColor=RED
+
+
+def useErase(img):
+    pass
+
+
 
 def imgInit():
     success, img = CAP.read()
     img = reverseImage(img)
-    img = HAND.drawHands(img)
-    lmList = HAND.getPosition(img, draw=False)
-    figures = HAND.getFigures()
-    return success, img, lmList, figures
+    img = HAND_DETECTOR.drawHands(img)
+    HAND_DETECTOR.initPosition(img)
+    return success, img
 
 
 class MainWindow(QMainWindow, UIMainWindow):
@@ -37,38 +60,52 @@ class MainWindow(QMainWindow, UIMainWindow):
         self.prex, self.prey = -1, -1
 
     def draw(self):
-        success, img, lmList, figures = imgInit()
+        success, img = imgInit()
+
+        rightHand = HAND_DETECTOR.rightHand
+        rightFingers=rightHand.getFingers()
+
+        leftHand = HAND_DETECTOR.leftHand
+        leftFingers = leftHand.getFingers()
+
+        if leftFingers is not None and len(leftFingers)!=0:
+            leftHand.exist=True
+            usePen(img,leftHand)
+        else:
+            leftHand.exist=False
+
         # 如果手指出现在屏幕中
-        if figures is not None and len(figures) != 0:
-            id1, x1, y1 = HAND.getFirst()
-            id2, x2, y2 = HAND.getSecond()
-            id3, x3, y3 = HAND.getThird()
-            id4, x4, y4 = HAND.getFourth()
-            id5, x5, y5 = HAND.getFifth()
+        if rightFingers is not None and len(rightFingers) != 0:
+            rightHand.exist=True
+            id1, x1, y1 = rightHand.getFirst()
+            id2, x2, y2 = rightHand.getSecond()
+            id3, x3, y3 = rightHand.getThird()
+            id4, x4, y4 = rightHand.getFourth()
+            id5, x5, y5 = rightHand.getFifth()
             # 对于以下情况不同的策略,可能需要定义若干接口
-            id2, x2, y2 = HAND.getSecond()
-            if operator.eq(figures, draw):
+            if operator.eq(rightFingers, draw):
                 # 如果食指伸出来了并且中指没有伸出来，就要画圈
                 cv2.circle(img, (x2, y2), PenRadius, PEN.penColor, cv2.FILLED)
                 if self.prex != -1 or self.prey != -1:
                     # print("draw line")
                     cv2.line(IMG_CANVAS, (x2, y2), (self.prex, self.prey), PEN.penColor, PEN.penThickness,
                              cv2.FILLED)
-            elif operator.eq(figures, rectangle):
+            elif operator.eq(rightFingers, rectangle):
                 drawRectangle(img, (x1, y1), (x2, y2), PEN.penColor)
-            elif operator.eq(figures, stopRectangle):
+            elif operator.eq(rightFingers, stopRectangle):
                 drawRectangle(IMG_CANVAS, (x1, y1), (x2, y2), PEN.penColor)
-            elif operator.eq(figures, triangle):
+            elif operator.eq(rightFingers, triangle):
                 drawTriangle(img, (x1, y1), (x2, y2), (x3, y3), PEN.penColor)
-            elif operator.eq(figures, [0, 1, 0, 0, 1]):
+            elif operator.eq(rightFingers, [0, 1, 0, 0, 1]):
                 if PEN.penColor == PURPLE:
                     PEN.penColor = GREEN
                 else:
                     PEN.penColor = PURPLE
-            elif operator.eq(figures, stop):
+            elif operator.eq(rightFingers, stop):
                 pass
             self.prex, self.prey = x2, y2
         else:
+            rightHand.exist=False
             self.prex, self.prey = -1, -1
 
         img = detectorImage(img, IMG_CANVAS)
