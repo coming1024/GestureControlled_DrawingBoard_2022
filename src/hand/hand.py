@@ -16,10 +16,10 @@ def judgeHand(myHand, imgWidth, imgHeight):
             firstFinger = lm.x
         if id == 17:
             fifthFinger = lm.x
-        cx, cy = int(lm.x * imgWidth), int(lm.y *imgHeight)
+        cx, cy = int(lm.x * imgWidth), int(lm.y * imgHeight)
         result.append([id, cx, cy])
     if firstFinger < fifthFinger:
-        return HandTag.RIGHT,result
+        return HandTag.RIGHT, result
     return HandTag.LEFT, result
 
 
@@ -27,7 +27,7 @@ class Hand:
     def __init__(self):
         self.tag = None
         self.lms = None
-        self.exist=False
+        self.exist = False
 
     def getFingers(self):
         curveList = []

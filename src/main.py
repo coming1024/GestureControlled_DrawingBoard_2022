@@ -8,7 +8,8 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from src.common.base import *
 from src.image.detector import *
 from src.image.draw import *
-from src.ui.window import *
+# from src.ui.window import *
+from src.ui.InterfaceUI_01 import *
 
 draw = [0, 1, 0, 0, 0]
 rectangle = [1, 1, 0, 0, 0]
@@ -16,29 +17,48 @@ stopRectangle = [1, 1, 0, 0, 1]
 triangle = [1, 1, 1, 0, 0]
 stop = [0, 1, 1, 0, 0]
 
-greenColor=[0,1,0,0,0]
-purpleColor=[0,1,1,0,0]
-blueColor=[0,1,1,1,0]
+# greenColor = [0, 1, 0, 0, 0]
+# purpleColor = [0, 1, 1, 0, 0]
+# blueColor = [0, 1, 1, 1, 0]
 
+left_select = [0, 1, 0, 0, 0]
+greenColor = [0, 1, 1, 0, 0]
+purpleColor = [0, 1, 1, 1, 0]
+blueColor = [0, 1, 1, 1, 1]
+
+Pen_flag = False
+# selectPen_flag = 0
 
 def usePen(img, leftHand):
-    leftFingers=leftHand.getFingers()
+    leftFingers = leftHand.getFingers()
 
-    if leftFingers is not None and len(leftFingers)!=0:
-        if operator.eq(leftFingers,greenColor):
+    if leftFingers is not None and len(leftFingers) != 0:
+        # if operator.eq(leftFingers, left_select):
+        #     # print(self.prex,self.prey)
+        #     print("select")
+        #     PEN.penColor = YELLOW
+        if operator.eq(leftFingers, greenColor):
             print("green")
-            PEN.penColor=GREEN
-        elif operator.eq(leftFingers,purpleColor):
+            PEN.penColor = GREEN
+        elif operator.eq(leftFingers, purpleColor):
             print("purple")
-            PEN.penColor=PURPLE
-        elif operator.eq(leftFingers,blueColor):
+            PEN.penColor = PURPLE
+        elif operator.eq(leftFingers, blueColor):
             print("blue")
-            PEN.penColor=RED
+            PEN.penColor = RED
 
 
 def useErase(img):
     pass
 
+
+def checkSelect(img, leftHand):
+    leftFingers = leftHand.getFingers()
+    if leftFingers is not None and len(leftFingers) != 0:
+        if operator.eq(leftFingers, left_select):
+            return True
+    else:
+        return False
 
 
 def imgInit():
@@ -48,8 +68,8 @@ def imgInit():
     HAND_DETECTOR.initPosition(img)
     return success, img
 
-
-class MainWindow(QMainWindow, UIMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
+    select_Pen_flag = False
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
@@ -60,23 +80,48 @@ class MainWindow(QMainWindow, UIMainWindow):
         self.prex, self.prey = -1, -1
 
     def draw(self):
+
+        global Pen_flag
         success, img = imgInit()
 
         rightHand = HAND_DETECTOR.rightHand
-        rightFingers=rightHand.getFingers()
+        rightFingers = rightHand.getFingers()
 
         leftHand = HAND_DETECTOR.leftHand
         leftFingers = leftHand.getFingers()
 
-        if leftFingers is not None and len(leftFingers)!=0:
-            leftHand.exist=True
-            usePen(img,leftHand)
+        if leftFingers is not None and len(leftFingers) != 0:
+            leftHand.exist = True
+            if checkSelect(img, leftHand) and not Pen_flag:
+                print("select")
+                self.clickButton("select")
+                lid_2, lx2, ly2 = leftHand.getSecond()
+                cv2.circle(img, (lx2, ly2), PenRadius, PEN.penColor, cv2.FILLED)
+                if lx2 < 200 and ly2 < 200:
+                    self.clickButton("selectPen")
+                    Pen_flag = True
+                    print("select_Pen_flag = 1")
+            if not checkSelect(img, leftHand) and Pen_flag:
+                print("enter")
+                usePen(img, leftHand)
+                Pen_flag = False
+            if PEN.penColor == GREEN:
+                self.clickButton("green")
+                # self.clickButton(self, "green")
+            elif PEN.penColor == PURPLE:
+                print("purple")
+                self.clickButton("purple")
+            elif PEN.penColor == RED:
+                print("red")
+                self.clickButton("red")
+
         else:
-            leftHand.exist=False
+            leftHand.exist = False
 
         # 如果手指出现在屏幕中
         if rightFingers is not None and len(rightFingers) != 0:
-            rightHand.exist=True
+            # self.clickButton()
+            rightHand.exist = True
             id1, x1, y1 = rightHand.getFirst()
             id2, x2, y2 = rightHand.getSecond()
             id3, x3, y3 = rightHand.getThird()
@@ -105,7 +150,7 @@ class MainWindow(QMainWindow, UIMainWindow):
                 pass
             self.prex, self.prey = x2, y2
         else:
-            rightHand.exist=False
+            rightHand.exist = False
             self.prex, self.prey = -1, -1
 
         img = detectorImage(img, IMG_CANVAS)

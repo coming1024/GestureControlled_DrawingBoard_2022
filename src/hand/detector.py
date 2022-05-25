@@ -2,36 +2,37 @@ import mediapipe as mp
 
 from src.hand.hand import *
 
+
 class LeftHand(Hand):
     def __init__(self):
         super().__init__()
-        self.tag=HandTag.LEFT
+        self.tag = HandTag.LEFT
 
-    def judgeCurve(self,finger):
-        var =fingerMap.get(finger)
-        if finger==0:
-            return True if self.lms[var][1]<self.lms[var-1][1] else False
-        return True if self.lms[var][2]>self.lms[var-2][2] else False
+    def judgeCurve(self, finger):
+        var = fingerMap.get(finger)
+        if finger == 0:
+            return True if self.lms[var][1] < self.lms[var - 1][1] else False
+        return True if self.lms[var][2] > self.lms[var - 2][2] else False
 
 
 class RightHand(Hand):
     def __init__(self):
         super().__init__()
-        self.tag=HandTag.RIGHT
+        self.tag = HandTag.RIGHT
 
     def judgeCurve(self, finger):
         var = fingerMap.get(finger)
-        if finger==0:
-            return True if self.lms[var][1]>self.lms[var-1][1] else False
-        return True if self.lms[var][2]>self.lms[var-2][2] else False
+        if finger == 0:
+            return True if self.lms[var][1] > self.lms[var - 1][1] else False
+        return True if self.lms[var][2] > self.lms[var - 2][2] else False
 
 
 class HandDetector:
 
     def __init__(self, mode=False, maxHands=2, modelComplexity=1, detectionCon=0.5, trackCon=0.5):
         self.processResults = None
-        self.leftHand=LeftHand()
-        self.rightHand=RightHand()
+        self.leftHand = LeftHand()
+        self.rightHand = RightHand()
 
         self.mode = mode
         self.maxHands = maxHands
@@ -97,5 +98,3 @@ class HandDetector:
     #                     if draw:
     #                         cv2.circle(img, (cx, cy), radius, color, cv2.FILLED)
     #     return self.rightLandMark
-
-
