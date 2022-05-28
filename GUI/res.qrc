@@ -1,5 +1,26 @@
 <RCC>
   <qresource prefix="icons">
+    <file>GUI-rsc/返回.png</file>
+    <file>GUI-rsc/细线条.png</file>
+    <file>GUI-rsc/中线条.png</file>
+    <file>GUI-rsc/粗线条.png</file>
+    <file>GUI-rsc/tx-六角星形.png</file>
+    <file>GUI-rsc/tx-平行四边形.png</file>
+    <file>GUI-rsc/tx-梯形.png</file>
+    <file>GUI-rsc/tx-斜十字形.png</file>
+    <file>GUI-rsc/tx-长方形.png</file>
+    <file>GUI-rsc/tx-椭圆形.png</file>
+    <file>GUI-rsc/tx-五角星形.png</file>
+    <file>GUI-rsc/tx-十字形.png</file>
+    <file>GUI-rsc/tx-菱形.png</file>
+    <file>GUI-rsc/tx-六边形.png</file>
+    <file>GUI-rsc/tx-八边形.png</file>
+    <file>GUI-rsc/tx-六边形.png</file>
+    <file>GUI-rsc/tx-圆形.png</file>
+    <file>GUI-rsc/tx-五边形.png</file>
+    <file>GUI-rsc/tx-三角形.png</file>
+    <file>GUI-rsc/圆.png</file>
+    <file>GUI-rsc/正方形.png</file>
     <file>GUI-rsc/关闭.png</file>
     <file>GUI-rsc/最大化.png</file>
     <file>GUI-rsc/最小化.png</file>

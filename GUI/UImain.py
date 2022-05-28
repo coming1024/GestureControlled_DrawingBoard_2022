@@ -2,7 +2,7 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-from InterfaceUI import Ui_MainWindow
+from InterfaceUI_01 import Ui_MainWindow
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -10,6 +10,36 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.penBoardHide()
+        self.pushButton_4.clicked.connect(self.penBoardShow)
+        self.shapeBoardHide()
+        self.pushButton_5.clicked.connect(self.shapeBoardShow)
+        self.colorBoardHide()
+        self.pushButton_6.clicked.connect(self.colorBoardShow)
+
+    def penBoardHide(self):
+        self.frame_5.setVisible(False)
+
+    def penBoardShow(self):
+        self.frame_6.setVisible(False)
+        self.frame_7.setVisible(False)
+        self.frame_5.setVisible(True)
+
+    def shapeBoardHide(self):
+        self.frame_6.setVisible(False)
+
+    def shapeBoardShow(self):
+        self.frame_5.setVisible(False)
+        self.frame_7.setVisible(False)
+        self.frame_6.setVisible(True)
+
+    def colorBoardHide(self):
+        self.frame_7.setVisible(False)
+
+    def colorBoardShow(self):
+        self.frame_5.setVisible(False)
+        self.frame_6.setVisible(False)
+        self.frame_7.setVisible(True)
 
 if __name__ == '__main__':
     import sys

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'InterfaceUI_01.ui'
+# Form implementation generated from reading ui file 'InterfaceUI_02.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -52,26 +52,8 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.frame_2)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.frame_7 = QtWidgets.QFrame(self.frame_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(4)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_7.sizePolicy().hasHeightForWidth())
-        self.frame_7.setSizePolicy(sizePolicy)
-        self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_7.setObjectName("frame_7")
-        self.horizontalLayout_3.addWidget(self.frame_7)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem)
         self.frame_4 = QtWidgets.QFrame(self.frame_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
-        self.frame_4.setSizePolicy(sizePolicy)
+        self.frame_4.setGeometry(QtCore.QRect(1000, 0, 221, 61))
         self.frame_4.setStyleSheet("QPushButton\n"
 "{\n"
 "    border:none;\n"
@@ -113,7 +95,6 @@ class Ui_MainWindow(object):
         self.pushButton_3.setAutoRepeatDelay(300)
         self.pushButton_3.setObjectName("pushButton_3")
         self.horizontalLayout_2.addWidget(self.pushButton_3)
-        self.horizontalLayout_3.addWidget(self.frame_4)
         self.verticalLayout.addWidget(self.frame_2)
         self.frame_3 = QtWidgets.QFrame(self.frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -125,7 +106,7 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
         self.Meau_WT = QtWidgets.QWidget(self.frame_3)
-        self.Meau_WT.setGeometry(QtCore.QRect(0, 0, 141, 691))
+        self.Meau_WT.setGeometry(QtCore.QRect(0, 0, 150, 661))
         self.Meau_WT.setMaximumSize(QtCore.QSize(150, 16777215))
         self.Meau_WT.setStyleSheet("QWidget{\n"
 "\n"
@@ -154,60 +135,36 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.pushButton_4 = QtWidgets.QPushButton(self.Meau_WT)
         self.pushButton_4.setMaximumSize(QtCore.QSize(150, 70))
-        self.pushButton_4.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/icons/icons/实物-画笔.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon3)
         self.pushButton_4.setObjectName("pushButton_4")
         self.verticalLayout_2.addWidget(self.pushButton_4)
         self.pushButton_5 = QtWidgets.QPushButton(self.Meau_WT)
         self.pushButton_5.setMaximumSize(QtCore.QSize(150, 70))
-        self.pushButton_5.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/icons/icons/橡皮,擦除,橡皮擦.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon4)
         self.pushButton_5.setObjectName("pushButton_5")
         self.verticalLayout_2.addWidget(self.pushButton_5)
         self.pushButton_6 = QtWidgets.QPushButton(self.Meau_WT)
         self.pushButton_6.setMaximumSize(QtCore.QSize(150, 70))
-        self.pushButton_6.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/icons/icons/形状.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_6.setIcon(icon5)
         self.pushButton_6.setObjectName("pushButton_6")
         self.verticalLayout_2.addWidget(self.pushButton_6)
+        self.pushButton_7 = QtWidgets.QPushButton(self.Meau_WT)
+        self.pushButton_7.setMaximumSize(QtCore.QSize(150, 70))
+        self.pushButton_7.setObjectName("pushButton_7")
+        self.verticalLayout_2.addWidget(self.pushButton_7)
+        spacerItem = QtWidgets.QSpacerItem(20, 150, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_2.addItem(spacerItem)
         spacerItem1 = QtWidgets.QSpacerItem(20, 150, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.verticalLayout_2.addItem(spacerItem1)
         spacerItem2 = QtWidgets.QSpacerItem(20, 150, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.verticalLayout_2.addItem(spacerItem2)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 150, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_2.addItem(spacerItem3)
-        self.pushButton_7 = QtWidgets.QPushButton(self.Meau_WT)
-        self.pushButton_7.setMaximumSize(QtCore.QSize(150, 70))
-        self.pushButton_7.setText("")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/icons/icons/新建文件.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_7.setIcon(icon6)
-        self.pushButton_7.setObjectName("pushButton_7")
-        self.verticalLayout_2.addWidget(self.pushButton_7)
         self.pushButton_8 = QtWidgets.QPushButton(self.Meau_WT)
         self.pushButton_8.setMaximumSize(QtCore.QSize(150, 70))
-        self.pushButton_8.setText("")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/icons/icons/open.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_8.setIcon(icon7)
         self.pushButton_8.setObjectName("pushButton_8")
         self.verticalLayout_2.addWidget(self.pushButton_8)
         self.pushButton_9 = QtWidgets.QPushButton(self.Meau_WT)
         self.pushButton_9.setMaximumSize(QtCore.QSize(150, 70))
-        self.pushButton_9.setText("")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/icons/icons/保存.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_9.setIcon(icon8)
         self.pushButton_9.setObjectName("pushButton_9")
         self.verticalLayout_2.addWidget(self.pushButton_9)
         self.frame_5 = QtWidgets.QFrame(self.frame_3)
-        self.frame_5.setGeometry(QtCore.QRect(150, 0, 141, 691))
+        self.frame_5.setGeometry(QtCore.QRect(150, -1, 141, 661))
         self.frame_5.setStyleSheet("QFrame {\n"
 "background-color:rgb(145, 145, 145);\n"
 "padding-bottom:5px;\n"
@@ -233,9 +190,9 @@ class Ui_MainWindow(object):
 "margin-right:10px;\n"
 "border-radius:10px;\n"
 "}")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/细线条.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_10.setIcon(icon9)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/细线条.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_10.setIcon(icon3)
         self.pushButton_10.setIconSize(QtCore.QSize(50, 20))
         self.pushButton_10.setObjectName("pushButton_10")
         self.verticalLayout_3.addWidget(self.pushButton_10)
@@ -251,9 +208,9 @@ class Ui_MainWindow(object):
 "margin-right:10px;\n"
 "border-radius:10px;\n"
 "}")
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/中线条.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_11.setIcon(icon10)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/中线条.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_11.setIcon(icon4)
         self.pushButton_11.setIconSize(QtCore.QSize(50, 20))
         self.pushButton_11.setObjectName("pushButton_11")
         self.verticalLayout_3.addWidget(self.pushButton_11)
@@ -269,9 +226,9 @@ class Ui_MainWindow(object):
 "margin-right:10px;\n"
 "border-radius:10px;\n"
 "}")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/粗线条.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_12.setIcon(icon11)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/粗线条.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_12.setIcon(icon5)
         self.pushButton_12.setIconSize(QtCore.QSize(50, 20))
         self.pushButton_12.setObjectName("pushButton_12")
         self.verticalLayout_3.addWidget(self.pushButton_12)
@@ -289,22 +246,8 @@ class Ui_MainWindow(object):
 "margin-top:15px;\n"
 "}")
         self.label.setObjectName("label")
-        self.pushButton_15 = QtWidgets.QPushButton(self.frame_5)
-        self.pushButton_15.setGeometry(QtCore.QRect(0, 0, 139, 30))
-        self.pushButton_15.setStyleSheet("QPushButton{\n"
-"background-color:rgb(145, 145, 145);\n"
-"margin-left:10px;\n"
-"margin-right:80px;\n"
-"border-radius:10px;\n"
-"height:30px;\n"
-"}")
-        self.pushButton_15.setText("")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/返回.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_15.setIcon(icon12)
-        self.pushButton_15.setObjectName("pushButton_15")
         self.frame_6 = QtWidgets.QFrame(self.frame_3)
-        self.frame_6.setGeometry(QtCore.QRect(150, 0, 211, 691))
+        self.frame_6.setGeometry(QtCore.QRect(150, 0, 211, 661))
         self.frame_6.setStyleSheet("QFrame {\n"
 "background-color:rgb(145, 145, 145);\n"
 "padding:5px;\n"
@@ -313,7 +256,7 @@ class Ui_MainWindow(object):
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_6.setObjectName("frame_6")
         self.formLayoutWidget = QtWidgets.QWidget(self.frame_6)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(0, 80, 211, 601))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(0, 50, 211, 601))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -332,9 +275,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_22.setText("")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/正方形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_22.setIcon(icon13)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/正方形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_22.setIcon(icon6)
         self.pushButton_22.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_22.setObjectName("pushButton_22")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.pushButton_22)
@@ -352,9 +295,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_21.setText("")
-        icon14 = QtGui.QIcon()
-        icon14.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-圆形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_21.setIcon(icon14)
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-圆形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_21.setIcon(icon7)
         self.pushButton_21.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_21.setObjectName("pushButton_21")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.pushButton_21)
@@ -372,9 +315,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_27.setText("")
-        icon15 = QtGui.QIcon()
-        icon15.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-三角形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_27.setIcon(icon15)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-三角形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_27.setIcon(icon8)
         self.pushButton_27.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_27.setObjectName("pushButton_27")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.pushButton_27)
@@ -391,9 +334,9 @@ class Ui_MainWindow(object):
 "border-radius:10px;\n"
 "}")
         self.pushButton_24.setText("")
-        icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-五边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_24.setIcon(icon16)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-五边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_24.setIcon(icon9)
         self.pushButton_24.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_24.setObjectName("pushButton_24")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.pushButton_24)
@@ -411,9 +354,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_29.setText("")
-        icon17 = QtGui.QIcon()
-        icon17.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-六边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_29.setIcon(icon17)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-六边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_29.setIcon(icon10)
         self.pushButton_29.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_29.setObjectName("pushButton_29")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.pushButton_29)
@@ -430,9 +373,9 @@ class Ui_MainWindow(object):
 "border-radius:10px;\n"
 "}")
         self.pushButton_23.setText("")
-        icon18 = QtGui.QIcon()
-        icon18.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-长方形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_23.setIcon(icon18)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-长方形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_23.setIcon(icon11)
         self.pushButton_23.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_23.setObjectName("pushButton_23")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.pushButton_23)
@@ -450,9 +393,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_30.setText("")
-        icon19 = QtGui.QIcon()
-        icon19.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-梯形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_30.setIcon(icon19)
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-梯形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_30.setIcon(icon12)
         self.pushButton_30.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_30.setObjectName("pushButton_30")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.pushButton_30)
@@ -469,9 +412,9 @@ class Ui_MainWindow(object):
 "border-radius:10px;\n"
 "}")
         self.pushButton_26.setText("")
-        icon20 = QtGui.QIcon()
-        icon20.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-八边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_26.setIcon(icon20)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-八边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_26.setIcon(icon13)
         self.pushButton_26.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_26.setObjectName("pushButton_26")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.pushButton_26)
@@ -489,9 +432,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_31.setText("")
-        icon21 = QtGui.QIcon()
-        icon21.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-菱形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_31.setIcon(icon21)
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-菱形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_31.setIcon(icon14)
         self.pushButton_31.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_31.setObjectName("pushButton_31")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.pushButton_31)
@@ -508,9 +451,9 @@ class Ui_MainWindow(object):
 "border-radius:10px;\n"
 "}")
         self.pushButton_25.setText("")
-        icon22 = QtGui.QIcon()
-        icon22.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-平行四边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_25.setIcon(icon22)
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-平行四边形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_25.setIcon(icon15)
         self.pushButton_25.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_25.setObjectName("pushButton_25")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.pushButton_25)
@@ -528,9 +471,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_32.setText("")
-        icon23 = QtGui.QIcon()
-        icon23.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-五角星形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_32.setIcon(icon23)
+        icon16 = QtGui.QIcon()
+        icon16.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-五角星形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_32.setIcon(icon16)
         self.pushButton_32.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_32.setObjectName("pushButton_32")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.pushButton_32)
@@ -547,9 +490,9 @@ class Ui_MainWindow(object):
 "border-radius:10px;\n"
 "}")
         self.pushButton_28.setText("")
-        icon24 = QtGui.QIcon()
-        icon24.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-六角星形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_28.setIcon(icon24)
+        icon17 = QtGui.QIcon()
+        icon17.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-六角星形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_28.setIcon(icon17)
         self.pushButton_28.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_28.setObjectName("pushButton_28")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.pushButton_28)
@@ -567,9 +510,9 @@ class Ui_MainWindow(object):
 "width:80px;\n"
 "}")
         self.pushButton_33.setText("")
-        icon25 = QtGui.QIcon()
-        icon25.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-十字形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_33.setIcon(icon25)
+        icon18 = QtGui.QIcon()
+        icon18.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-十字形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_33.setIcon(icon18)
         self.pushButton_33.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_33.setObjectName("pushButton_33")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.pushButton_33)
@@ -586,59 +529,35 @@ class Ui_MainWindow(object):
 "border-radius:10px;\n"
 "}")
         self.pushButton_34.setText("")
-        icon26 = QtGui.QIcon()
-        icon26.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-斜十字形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_34.setIcon(icon26)
+        icon19 = QtGui.QIcon()
+        icon19.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-斜十字形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_34.setIcon(icon19)
         self.pushButton_34.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_34.setObjectName("pushButton_34")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.pushButton_34)
         self.label_3 = QtWidgets.QLabel(self.frame_6)
-        self.label_3.setGeometry(QtCore.QRect(30, 30, 121, 41))
+        self.label_3.setGeometry(QtCore.QRect(40, 0, 121, 41))
         self.label_3.setStyleSheet("QLabel {\n"
 "color:rgb(241, 241, 241);\n"
 "font-size:24px;\n"
 "margin-left:30px;\n"
 "}")
         self.label_3.setObjectName("label_3")
-        self.pushButton_14 = QtWidgets.QPushButton(self.frame_6)
-        self.pushButton_14.setGeometry(QtCore.QRect(0, 0, 139, 30))
-        self.pushButton_14.setStyleSheet("QPushButton{\n"
-"background-color:rgb(145, 145, 145);\n"
-"margin-left:10px;\n"
-"margin-right:80px;\n"
-"border-radius:10px;\n"
-"height:30px;\n"
-"}")
-        self.pushButton_14.setText("")
-        self.pushButton_14.setIcon(icon12)
-        self.pushButton_14.setObjectName("pushButton_14")
-        self.frame_8 = QtWidgets.QFrame(self.frame_3)
-        self.frame_8.setGeometry(QtCore.QRect(150, 0, 141, 691))
-        self.frame_8.setStyleSheet("QFrame {\n"
+        self.frame_7 = QtWidgets.QFrame(self.frame_3)
+        self.frame_7.setGeometry(QtCore.QRect(150, 0, 141, 661))
+        self.frame_7.setStyleSheet("QFrame {\n"
 "background-color:rgb(145, 145, 145);\n"
 "padding-bottom:5px;\n"
 "}")
-        self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_8.setObjectName("frame_8")
-        self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.frame_8)
-        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 141, 681))
+        self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_7.setObjectName("frame_7")
+        self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.frame_7)
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(0, -1, 141, 651))
         self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.pushButton_13 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
-        self.pushButton_13.setStyleSheet("QPushButton{\n"
-"background-color:rgb(145, 145, 145);\n"
-"margin-left:10px;\n"
-"margin-right:80px;\n"
-"border-radius:10px;\n"
-"height:30px;\n"
-"}")
-        self.pushButton_13.setText("")
-        self.pushButton_13.setIcon(icon12)
-        self.pushButton_13.setObjectName("pushButton_13")
-        self.verticalLayout_6.addWidget(self.pushButton_13)
         self.label_9 = QtWidgets.QLabel(self.verticalLayoutWidget_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -648,7 +567,7 @@ class Ui_MainWindow(object):
         self.label_9.setStyleSheet("QLabel {\n"
 "color:rgb(241, 241, 241);\n"
 "font-size:24px;\n"
-"margin-left:37px;\n"
+"margin-left:17px;\n"
 "margin-top:15px;\n"
 "}")
         self.label_9.setObjectName("label_9")
@@ -849,12 +768,18 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButton_4.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton_5.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton_6.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton_7.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton_8.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton_9.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_10.setText(_translate("MainWindow", "1 细"))
         self.pushButton_11.setText(_translate("MainWindow", "2 中"))
         self.pushButton_12.setText(_translate("MainWindow", "3 粗"))
         self.label.setText(_translate("MainWindow", "画笔粗细"))
         self.label_3.setText(_translate("MainWindow", "形状"))
-        self.label_9.setText(_translate("MainWindow", "颜色"))
+        self.label_9.setText(_translate("MainWindow", "画笔颜色"))
         self.pushButton_60.setText(_translate("MainWindow", "1 白色"))
         self.pushButton_61.setText(_translate("MainWindow", "2 黑色"))
         self.pushButton_62.setText(_translate("MainWindow", "PushButton"))
@@ -879,4 +804,3 @@ class Ui_MainWindow(object):
         self.actionshux.setText(_translate("MainWindow", "属性"))
         self.actiong.setText(_translate("MainWindow", "关于画板"))
 import res_rc
-import GUI素材库.rsc_rc

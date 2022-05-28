@@ -71,46 +71,17 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QFrame" name="frame_7">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>4</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_4">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton
+         <widget class="QFrame" name="frame_4">
+          <property name="geometry">
+           <rect>
+            <x>1000</x>
+            <y>0</y>
+            <width>221</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton
 {
 	border:none;
 }
@@ -118,66 +89,64 @@ QPushButton:hover
 {
 	padding-bottom:3px;
 }</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <item>
-              <widget class="QPushButton" name="pushButton">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="GUI素材库/rsc.qrc">
-                 <normaloff>:/icons/icons/最小化.png</normaloff>:/icons/icons/最小化.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_2">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="GUI素材库/rsc.qrc">
-                 <normaloff>:/icons/icons/最大化.png</normaloff>:/icons/icons/最大化.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_3">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="GUI素材库/rsc.qrc">
-                 <normaloff>:/icons/icons/关闭.png</normaloff>:/icons/icons/关闭.png</iconset>
-               </property>
-               <property name="autoRepeatDelay">
-                <number>300</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/icons/icons/最小化.png</normaloff>:/icons/icons/最小化.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/icons/icons/最大化.png</normaloff>:/icons/icons/最大化.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/icons/icons/关闭.png</normaloff>:/icons/icons/关闭.png</iconset>
+             </property>
+             <property name="autoRepeatDelay">
+              <number>300</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
        <item>
@@ -199,8 +168,8 @@ QPushButton:hover
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>141</width>
-            <height>691</height>
+            <width>150</width>
+            <height>661</height>
            </rect>
           </property>
           <property name="maximumSize">
@@ -256,11 +225,7 @@ QPushButton:pressed{
               </size>
              </property>
              <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/实物-画笔.png</normaloff>:/icons/icons/实物-画笔.png</iconset>
+              <string>PushButton</string>
              </property>
             </widget>
            </item>
@@ -273,11 +238,7 @@ QPushButton:pressed{
               </size>
              </property>
              <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/橡皮,擦除,橡皮擦.png</normaloff>:/icons/icons/橡皮,擦除,橡皮擦.png</iconset>
+              <string>PushButton</string>
              </property>
             </widget>
            </item>
@@ -290,11 +251,20 @@ QPushButton:pressed{
               </size>
              </property>
              <property name="text">
-              <string/>
+              <string>PushButton</string>
              </property>
-             <property name="icon">
-              <iconset resource="GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/形状.png</normaloff>:/icons/icons/形状.png</iconset>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_7">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>70</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>PushButton</string>
              </property>
             </widget>
            </item>
@@ -347,23 +317,6 @@ QPushButton:pressed{
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_7">
-             <property name="maximumSize">
-              <size>
-               <width>150</width>
-               <height>70</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/新建文件.png</normaloff>:/icons/icons/新建文件.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_8">
              <property name="maximumSize">
               <size>
@@ -372,11 +325,7 @@ QPushButton:pressed{
               </size>
              </property>
              <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/open.png</normaloff>:/icons/icons/open.png</iconset>
+              <string>PushButton</string>
              </property>
             </widget>
            </item>
@@ -389,11 +338,7 @@ QPushButton:pressed{
               </size>
              </property>
              <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="GUI素材库/rsc.qrc">
-               <normaloff>:/icons/icons/保存.png</normaloff>:/icons/icons/保存.png</iconset>
+              <string>PushButton</string>
              </property>
             </widget>
            </item>
@@ -403,9 +348,9 @@ QPushButton:pressed{
           <property name="geometry">
            <rect>
             <x>150</x>
-            <y>0</y>
+            <y>-1</y>
             <width>141</width>
-            <height>691</height>
+            <height>661</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -552,32 +497,6 @@ margin-top:15px;
             <string>画笔粗细</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pushButton_15">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>139</width>
-             <height>30</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color:rgb(145, 145, 145);
-margin-left:10px;
-margin-right:80px;
-border-radius:10px;
-height:30px;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="res.qrc">
-             <normaloff>:/icons/GUI-rsc/返回.png</normaloff>:/icons/GUI-rsc/返回.png</iconset>
-           </property>
-          </widget>
          </widget>
          <widget class="QFrame" name="frame_6">
           <property name="geometry">
@@ -585,7 +504,7 @@ height:30px;
             <x>150</x>
             <y>0</y>
             <width>211</width>
-            <height>691</height>
+            <height>661</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -604,7 +523,7 @@ padding:5px;
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>80</y>
+             <y>50</y>
              <width>211</width>
              <height>601</height>
             </rect>
@@ -1057,8 +976,8 @@ border-radius:10px;
           <widget class="QLabel" name="label_3">
            <property name="geometry">
             <rect>
-             <x>30</x>
-             <y>30</y>
+             <x>40</x>
+             <y>0</y>
              <width>121</width>
              <height>41</height>
             </rect>
@@ -1074,40 +993,14 @@ margin-left:30px;
             <string>形状</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pushButton_14">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>139</width>
-             <height>30</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color:rgb(145, 145, 145);
-margin-left:10px;
-margin-right:80px;
-border-radius:10px;
-height:30px;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="res.qrc">
-             <normaloff>:/icons/GUI-rsc/返回.png</normaloff>:/icons/GUI-rsc/返回.png</iconset>
-           </property>
-          </widget>
          </widget>
-         <widget class="QFrame" name="frame_8">
+         <widget class="QFrame" name="frame_7">
           <property name="geometry">
            <rect>
             <x>150</x>
             <y>0</y>
             <width>141</width>
-            <height>691</height>
+            <height>661</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -1126,32 +1019,12 @@ padding-bottom:5px;
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-1</y>
              <width>141</width>
-             <height>681</height>
+             <height>651</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <widget class="QPushButton" name="pushButton_13">
-              <property name="styleSheet">
-               <string notr="true">QPushButton{
-background-color:rgb(145, 145, 145);
-margin-left:10px;
-margin-right:80px;
-border-radius:10px;
-height:30px;
-}</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset resource="res.qrc">
-                <normaloff>:/icons/GUI-rsc/返回.png</normaloff>:/icons/GUI-rsc/返回.png</iconset>
-              </property>
-             </widget>
-            </item>
             <item>
              <widget class="QLabel" name="label_9">
               <property name="sizePolicy">
@@ -1164,12 +1037,12 @@ height:30px;
                <string notr="true">QLabel {
 color:rgb(241, 241, 241);
 font-size:24px;
-margin-left:37px;
+margin-left:17px;
 margin-top:15px;
 }</string>
               </property>
               <property name="text">
-               <string>颜色</string>
+               <string>画笔颜色</string>
               </property>
              </widget>
             </item>
@@ -1481,7 +1354,7 @@ border-radius:10px;
   </action>
  </widget>
  <resources>
-  <include location="GUI素材库/rsc.qrc"/>
+  <include location="GUI素材库/res.qrc"/>
   <include location="res.qrc"/>
  </resources>
  <connections>
