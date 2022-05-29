@@ -299,6 +299,29 @@ QPushButton:pressed{
             </widget>
            </item>
            <item>
+            <widget class="QPushButton" name="pushButton_16">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>70</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="GUI素材库/rsc.qrc">
+               <normaloff>:/icons/icons/颜色.png</normaloff>:/icons/icons/颜色.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
             <spacer name="horizontalSpacer_6">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -309,7 +332,7 @@ QPushButton:pressed{
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>150</height>
+               <height>120</height>
               </size>
              </property>
             </spacer>
@@ -325,7 +348,7 @@ QPushButton:pressed{
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>150</height>
+               <height>120</height>
               </size>
              </property>
             </spacer>
@@ -341,7 +364,7 @@ QPushButton:pressed{
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>150</height>
+               <height>140</height>
               </size>
              </property>
             </spacer>

@@ -19,7 +19,7 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.pushButton_6.clicked.connect(self.shapeBoardShow)
         self.pushButton_14.clicked.connect(self.shapeBoardHide)
         self.colorBoardHide()
-        self.pushButton_5.clicked.connect(self.colorBoardShow)
+        self.pushButton_16.clicked.connect(self.colorBoardShow)
         self.pushButton_13.clicked.connect(self.colorBoardHide)
         BtnFunction.PreParement(self)
         BtnFunction.UiShaw(self)
