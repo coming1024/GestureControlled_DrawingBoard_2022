@@ -45,7 +45,7 @@ class Hand:
 
     # 每只手的流程
     @abstractmethod
-    def process(self, img,mainWindow=None):
+    def process(self,img,anotherHand,mainWindow=None):
         pass
 
     # 判断手是否出现在画面上

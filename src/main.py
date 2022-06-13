@@ -1,5 +1,7 @@
 import sys
 
+import cv2
+import numpy as np
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication
@@ -37,15 +39,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def draw(self):
         success, img = imgInit()
 
-        HAND_DETECTOR.leftHand.process(img,self)
-        HAND_DETECTOR.rightHand.process(img)
+        leftHand=HAND_DETECTOR.leftHand
+        rightHand=HAND_DETECTOR.rightHand
+        leftHand.process(img,rightHand,self)
+        rightHand.process(img,leftHand)
 
         img = detectorImage(img, IMG_CANVAS)
-        showImage = QImage(IMG_CANVAS.data, IMG_CANVAS.shape[1], IMG_CANVAS.shape[0], QImage.Format_RGB888)
+        showImage=QImage(img.data,img.shape[1],img.shape[0],QImage.Format_BGR888)
+        # showImage = QImage(IMG_CANVAS.data, IMG_CANVAS.shape[1], IMG_CANVAS.shape[0], QImage.Format_RGB888)
         self.label.setPixmap(QPixmap.fromImage(showImage))  # 将摄像头显示在之前创建的Label控件中
         # self.timer_camera.start(1)
-        cv2.imshow("Img", img)
-        # cv2.imshow("canvas", imgCanvas)
+        # cv2.imshow("Img", img)
+        cv2.imshow("canvas", IMG_CANVAS)
+
 
 
 if __name__ == "__main__":

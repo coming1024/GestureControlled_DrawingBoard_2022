@@ -47,7 +47,7 @@ class LeftHand(Hand):
             print("blue")
             PEN.penColor = RED
 
-    def process(self,img,mainWindow=None):
+    def process(self,img,anotherHand,mainWindow=None):
         global Pen_flag
         if not self.judgeNull():
             if self.checkSelect() and not Pen_flag:
@@ -66,8 +66,9 @@ class LeftHand(Hand):
             if PEN.penColor == GREEN:
                 mainWindow.clickButton("green")
             elif PEN.penColor == PURPLE:
-                print("purple")
-                mainWindow.clickButton("purple")
+                pass
+                # print("purple")
+                # mainWindow.clickButton("purple")
             elif PEN.penColor == RED:
                 print("red")
                 mainWindow.clickButton("red")
