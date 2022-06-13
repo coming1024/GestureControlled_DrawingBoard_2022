@@ -13,44 +13,20 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute((QtCore.Qt.WA_TranslucentBackground))
         self.penBoardHide()
-        self.pushButton_4.clicked.connect(self.penBoardShow)
-        self.pushButton_15.clicked.connect(self.penBoardHide)
+        self.pushButton_4.clicked.connect(self.penBoardShow)       # 点击画笔按钮
+        self.pushButton_15.clicked.connect(self.penBoardHide)       # 隐藏画笔菜单
         self.shapeBoardHide()
-        self.pushButton_6.clicked.connect(self.shapeBoardShow)
-        self.pushButton_14.clicked.connect(self.shapeBoardHide)
+        self.pushButton_6.clicked.connect(self.shapeBoardShow)       # 点击形状按钮
+        self.pushButton_14.clicked.connect(self.shapeBoardHide)       # 隐藏形状菜单
         self.colorBoardHide()
-        self.pushButton_16.clicked.connect(self.colorBoardShow)
-        self.pushButton_13.clicked.connect(self.colorBoardHide)
+        self.pushButton_16.clicked.connect(self.colorBoardShow)       # 点击颜色按钮
+        self.pushButton_13.clicked.connect(self.colorBoardHide)       # 隐藏形状菜单
+        self.pushButton_5.clicked.connect(self.eraserBtn)       # 点击橡皮按钮
+        self.pushButton_9.clicked.connect(self.saveBtn)        # 点击保存按钮
+        self.pushButton_7.clicked.connect(self.newBtn)         # 点击新建按钮
         BtnFunction.PreParement(self)
         BtnFunction.UiShaw(self)
         self.show()
-
-
-    # 拖动
-    def mousePressEvent(self, event):
-        if event.button() == QtCore.Qt.LeftButton and self.isMaximized() == False:
-            self.m_flag = True
-            self.QtWidgetsm_Position = event.globalPos() - self.pos()  # 获取鼠标相对窗口的位置
-            event.accept()
-            self.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))  # 更改鼠标图标
-
-    def mouseMoveEvent(self, mouse_event):
-        if QtCore.Qt.LeftButton and self.m_flag:
-            self.move(mouse_event.globalPos() - self.m_Position)  # 更改窗口位置
-            mouse_event.accept()
-
-    def mouseReleaseEvent(self, mouse_event):
-        self.m_flag = False
-        self.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-
-    # 放大缩小（还有问题）
-    def restore_or_maximize_window(self):
-        if self.isMaximized():
-            self.showNormal()
-            self.ui.pushButton_2.setIcon(QtGui.QIcon(u":/icons/icons/maxsize.png"))
-        else:
-            self.showMaximized()
-            self.ui.pushButton_2.setIcon(QtGui.QIcon(u":/icons/icons/minimizeWhite.png"))
 
     # 浮窗
     def PageChange(self):
@@ -76,6 +52,14 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.frame_6.setVisible(False)
         self.frame_8.setVisible(False)
         self.frame_5.setVisible(True)
+        self.btnColorBack()
+        self.pushButton_4.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:7px solid #ffd194;\n"
+"    border-radius:9px;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"}\n")
 
     # 形状隐藏
     def shapeBoardHide(self):
@@ -86,6 +70,14 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.frame_5.setVisible(False)
         self.frame_8.setVisible(False)
         self.frame_6.setVisible(True)
+        self.btnColorBack()
+        self.pushButton_6.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:7px solid #ffd194;\n"
+"    border-radius:9px;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"}\n")
 
     # 颜色隐藏
     def colorBoardHide(self):
@@ -96,6 +88,165 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.frame_5.setVisible(False)
         self.frame_6.setVisible(False)
         self.frame_8.setVisible(True)
+        self.btnColorBack()
+        self.pushButton_16.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:7px solid #ffd194;\n"
+"    border-radius:9px;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"}\n")
+
+    # 点击橡皮
+    def eraserBtn(self):
+        self.frame_6.setVisible(False)
+        self.frame_8.setVisible(False)
+        self.frame_5.setVisible(True)
+        self.btnColorBack()
+        self.pushButton_5.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:7px solid #ffd194;\n"
+"    border-radius:9px;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"}\n")
+
+    # 点击保存
+    def saveBtn(self):
+        self.btnColorBack()
+        self.pushButton_9.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:7px solid #ffd194;\n"
+"    border-radius:9px;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"}\n")
+
+    # 点击新建
+    def newBtn(self):
+        self.btnColorBack()
+        self.pushButton_7.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:7px solid #ffd194;\n"
+"    border-radius:9px;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"}\n")
+
+    # 恢复按钮颜色
+    def btnColorBack(self):
+        self.pushButton_4.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:3px solid rgba(200, 200, 200, 255);\n"
+"    border-radius:9px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"    }\n"
+"QPushButton:pressed{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:rgba(0,0,0,40);\n"
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"    }")
+        self.pushButton_5.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:3px solid rgba(200, 200, 200, 255);\n"
+"    border-radius:9px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"    }\n"
+"QPushButton:pressed{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:rgba(0,0,0,40);\n"
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"    }")
+        self.pushButton_6.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:3px solid rgba(200, 200, 200, 255);\n"
+"    border-radius:9px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"    }\n"
+"QPushButton:pressed{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:rgba(0,0,0,40);\n"
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"    }")
+        self.pushButton_16.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:3px solid rgba(200, 200, 200, 255);\n"
+"    border-radius:9px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"    }\n"
+"QPushButton:pressed{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:rgba(0,0,0,40);\n"
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"    }")
+        self.pushButton_7.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:3px solid rgba(200, 200, 200, 255);\n"
+"    border-radius:9px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"    }\n"
+"QPushButton:pressed{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:rgba(0,0,0,40);\n"
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"    }")
+        self.pushButton_8.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:3px solid rgba(200, 200, 200, 255);\n"
+"    border-radius:9px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"    }\n"
+"QPushButton:pressed{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:rgba(0,0,0,40);\n"
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"    }")
+        self.pushButton_9.setStyleSheet("QPushButton{\n"
+"    font: 17pt \"仿宋\";\n"
+"    color:rgba(200, 200,200, 255);\n"
+"    border-left:3px solid rgba(200, 200, 200, 255);\n"
+"    border-radius:9px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+"    }\n"
+"QPushButton:pressed{\n"
+"    border-left:7px solid #ffd194;\n"
+"    background-color:rgba(0,0,0,40);\n"
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"    }")
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
