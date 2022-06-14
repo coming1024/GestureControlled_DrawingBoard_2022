@@ -46,6 +46,7 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
     # 画笔隐藏
     def penBoardHide(self):
         self.frame_5.setVisible(False)
+        self.btnColorBack()
 
     # 画笔展示
     def penBoardShow(self):
@@ -64,6 +65,7 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
     # 形状隐藏
     def shapeBoardHide(self):
         self.frame_6.setVisible(False)
+        self.btnColorBack()
 
     # 形状展示
     def shapeBoardShow(self):
@@ -82,6 +84,7 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
     # 颜色隐藏
     def colorBoardHide(self):
         self.frame_8.setVisible(False)
+        self.btnColorBack()
 
     # 颜色展示
     def colorBoardShow(self):
