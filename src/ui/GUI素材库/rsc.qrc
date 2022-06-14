@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/颜色.png</file>
+    <file>icons/open.png</file>
+    <file>icons/保存.png</file>
+    <file>icons/实物-画笔.png</file>
+    <file>icons/橡皮,擦除,橡皮擦.png</file>
+    <file>icons/新建文件.png</file>
+    <file>icons/形状.png</file>
+    <file>icons/关闭.png</file>
+    <file>icons/最小化.png</file>
+    <file>icons/最大化.png</file>
+  </qresource>
+</RCC>

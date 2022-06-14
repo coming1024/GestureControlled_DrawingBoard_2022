@@ -1,5 +1,5 @@
+from abc import abstractmethod
 from src.hand.finger import fingerMap, Finger
-
 
 class HandTag:
     RIGHT = "right"
@@ -27,7 +27,6 @@ class Hand:
     def __init__(self):
         self.tag = None
         self.lms = None
-        self.exist = False
 
     def getFingers(self):
         curveList = []
@@ -39,8 +38,20 @@ class Hand:
                     curveList.append(1)
         return curveList
 
+    # 判断某根手指是否完全
+    @abstractmethod
     def judgeCurve(self, finger):
         pass
+
+    # 每只手的流程
+    @abstractmethod
+    def process(self,img,anotherHand,mainWindow=None):
+        pass
+
+    # 判断手是否出现在画面上
+    def judgeNull(self):
+        fingers = self.getFingers()
+        return fingers is None or len(fingers) == 0
 
     def getOneFinger(self, fingerNo):
         return self.lms[fingerNo]
