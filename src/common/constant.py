@@ -14,3 +14,13 @@ IMG_WIDTH = 1280
 HEIGHT1 = 800
 HEIGHT2 = 900
 HEIGHT3 = 1000
+
+PenThickness1 = 10
+PenThickness2 = 20
+PenThickness3 = 30
+
+Rectangle_Length = 40
+Rectangle_Width = 40
+
+
+Circle_Radius=40

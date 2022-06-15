@@ -11,5 +11,3 @@ class DrawPen:
 
 IMG_CANVAS = np.zeros((IMG_HEIGHT, IMG_WIDTH, 3), np.uint8)
 PEN = DrawPen(color=PURPLE, thickness=PenThickness)
-PENFLAG = 0
-SECONDFLAG = 0

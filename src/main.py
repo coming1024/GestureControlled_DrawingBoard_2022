@@ -71,7 +71,7 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         leftHand.process(img, self)
         rightHand.process(img,self)
 
-        img = detectorImage(img, IMG_CANVAS)
+        detectorImage(img, IMG_CANVAS)
         showImage = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_BGR888)
         # showImage = QImage(IMG_CANVAS.data, IMG_CANVAS.shape[1], IMG_CANVAS.shape[0], QImage.Format_RGB888)
         self.label_2.setPixmap(QPixmap.fromImage(showImage))  # 将摄像头显示在之前创建的Label控件中
