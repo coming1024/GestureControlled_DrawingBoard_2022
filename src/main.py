@@ -50,8 +50,9 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.pushButton_5.clicked.connect(self.eraserBtn)  # 点击橡皮按钮
         self.pushButton_9.clicked.connect(self.saveBtn)  # 点击保存按钮
         self.pushButton_7.clicked.connect(self.newBtn)  # 点击新建按钮
-        BtnFunction.PreParement(self)
-        BtnFunction.UiShaw(self)
+        # BtnFunction.PreParement(self)
+        # BtnFunction.UiShaw(self)
+        self.initBtn()
         self.show()
         self.timer_camera = QTimer(self)
         self.timer_camera.timeout.connect(self.draw)
@@ -73,20 +74,22 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         # cv2.imshow("Img", img)
         cv2.imshow("canvas", IMG_CANVAS)
 
-    # 浮窗
-    def PageChange(self):
-        global Templ_Change
-        if Templ_Change == 0:
-            self.showMaximized()
-            Templ_Change = 1
-            return
-        if Templ_Change == 1:
-            self.showNormal()
-            Templ_Change = 0
+    # 拖动
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.LeftButton and self.isMaximized() == False:
+            self.m_flag = True
+            self.m_Position = event.globalPos() - self.pos()  # 获取鼠标相对窗口的位置
+            event.accept()
+            self.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))  # 更改鼠标图标
 
-    def mousePressEvent(self, e):
-        if e.pos().x() < 150:
-            BtnFunction.MeauExpend(self)
+    def mouseMoveEvent(self, mouse_event):
+        if QtCore.Qt.LeftButton and self.m_flag:
+            self.move(mouse_event.globalPos() - self.m_Position)  # 更改窗口位置
+            mouse_event.accept()
+
+    def mouseReleaseEvent(self, mouse_event):
+        self.m_flag = False
+        self.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
 
     # 画笔隐藏
     def penBoardHide(self):
@@ -297,6 +300,318 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
                                         "    border-top-right-radius:0px;\n"
                                         "    }")
 
+    # 按钮初始化
+    def initBtn(self):
+        self.pushButton_10.clicked.connect(self.selectBtn10)  # 粗细1
+        self.pushButton_11.clicked.connect(self.selectBtn11)  # 粗细2
+        self.pushButton_12.clicked.connect(self.selectBtn12)  # 粗细3
+        self.pushButton_21.clicked.connect(self.selectBtn21)  # 形状1
+        self.pushButton_22.clicked.connect(self.selectBtn22)
+        self.pushButton_23.clicked.connect(self.selectBtn23)
+        self.pushButton_24.clicked.connect(self.selectBtn24)
+        self.pushButton_25.clicked.connect(self.selectBtn25)
+        self.pushButton_26.clicked.connect(self.selectBtn26)
+        self.pushButton_27.clicked.connect(self.selectBtn27)
+        self.pushButton_28.clicked.connect(self.selectBtn28)
+        self.pushButton_29.clicked.connect(self.selectBtn29)
+        self.pushButton_30.clicked.connect(self.selectBtn30)
+        self.pushButton_31.clicked.connect(self.selectBtn31)
+        self.pushButton_32.clicked.connect(self.selectBtn32)
+        self.pushButton_33.clicked.connect(self.selectBtn33)
+        self.pushButton_34.clicked.connect(self.selectBtn34)  # 形状14
+
+    # 其他点击改按钮颜色
+    def selectBtn10(self):
+        self.secondBtnBack()
+        self.pushButton_10.setStyleSheet("QPushButton{\n"
+"    border-left:7px solid #ffd194;\n"
+"    border-radius:9px;\n"
+"background-color:rgb(242, 242, 242);\n"
+"margin-left:10px;\n"
+"margin-right:10px;\n"
+"border-radius:10px;\n"
+"}\n")
+
+    def selectBtn11(self):
+        self.secondBtnBack()
+        self.pushButton_11.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn12(self):
+        self.secondBtnBack()
+        self.pushButton_12.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn21(self):
+        self.secondBtnBack()
+        self.pushButton_21.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn22(self):
+        self.secondBtnBack()
+        self.pushButton_22.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn23(self):
+        self.secondBtnBack()
+        self.pushButton_23.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn24(self):
+        self.secondBtnBack()
+        self.pushButton_24.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn25(self):
+        self.secondBtnBack()
+        self.pushButton_25.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn26(self):
+        self.secondBtnBack()
+        self.pushButton_26.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn27(self):
+        self.secondBtnBack()
+        self.pushButton_27.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn28(self):
+        self.secondBtnBack()
+        self.pushButton_28.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn29(self):
+        self.secondBtnBack()
+        self.pushButton_29.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn30(self):
+        self.secondBtnBack()
+        self.pushButton_30.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn31(self):
+        self.secondBtnBack()
+        self.pushButton_31.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn32(self):
+        self.secondBtnBack()
+        self.pushButton_32.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn33(self):
+        self.secondBtnBack()
+        self.pushButton_33.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    def selectBtn34(self):
+        self.secondBtnBack()
+        self.pushButton_34.setStyleSheet("QPushButton{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
+
+    # 恢复按钮颜色
+    def secondBtnBack(self):
+        self.pushButton_10.setStyleSheet("QPushButton{\n"
+"background-color:rgb(242, 242, 242);\n"
+"margin-left:10px;\n"
+"margin-right:10px;\n"
+"border-radius:10px;\n"
+"}")
+        self.pushButton_11.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_12.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_21.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_22.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_23.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_24.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_25.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_26.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_27.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_28.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_29.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_30.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_31.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_32.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_33.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
+        self.pushButton_34.setStyleSheet("QPushButton{\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
 
 if __name__ == "__main__":
     # app = QApplication(sys.argv)

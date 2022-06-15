@@ -19,6 +19,7 @@ shapeType = None
 shapeArray = [1, 1, 0, 0, 0]
 x1, y1, x2, y2 = -1, -1, -1, -1
 
+
 class LeftHand(Hand):
     def __init__(self):
         super().__init__()
@@ -88,7 +89,7 @@ class LeftHand(Hand):
         if self.judgeNull():
             return
         rightHandFingers = hand.getFingers()
-        global x1,y1,x2,y2
+        global x1, y1, x2, y2
 
         # 正方形
         if operator.eq(fingers, first):
@@ -109,21 +110,22 @@ class LeftHand(Hand):
             if Hand.SecondFlag == 1:
                 drawRectangle(img, x1, y1, x2, y2)
             # 圆形
-            elif Hand.SecondFlag ==2:
+            elif Hand.SecondFlag == 2:
                 drawCircle(img, x1, y1, x2, y2)
             # 三角形
-            elif Hand.SecondFlag ==3:
+            elif Hand.SecondFlag == 3:
                 drawTriangle(img, x1, y1, x2, y2)
             elif operator.eq(fingers, fourth):
                 pass
         elif operator.eq(rightHandFingers, closeOperation):
-            if x1!=-1 and y1!=-1 and x2!=-1 and y2!=-1:
-                if Hand.SecondFlag==1:
+            if x1 != -1 and y1 != -1 and x2 != -1 and y2 != -1:
+                if Hand.SecondFlag == 1:
                     drawRectangle(IMG_CANVAS, x1, y1, x2, y2)
-                elif Hand.SecondFlag==2:
+                elif Hand.SecondFlag == 2:
                     drawCircle(IMG_CANVAS, x1, y1, x2, y2)
-                elif Hand.SecondFlag==3:
+                elif Hand.SecondFlag == 3:
                     drawTriangle(IMG_CANVAS, x1, y1, x2, y2)
+                Hand.SecondFlag = 0
         if operator.eq(fingers, closeOperation):
             mainWindow.shapeBoardHide()
             Hand.FirstFlag = 0
