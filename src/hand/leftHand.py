@@ -5,18 +5,18 @@ import cv2
 # import src.ui.MyMethod as Method
 # from src.main import PaintWindow
 # from src.ui.InterfaceUI_01 import Ui_MainWindow
-from src.common.base import PEN
+from src.common.base import PEN, PENFLAG, SECONDFLAG
 from src.common.constant import GREEN, PURPLE, RED, PenRadius
 from src.hand.finger import fingerMap
 from src.hand.hand import Hand, HandTag
-
-Pen_flag = 0
 
 left_select = [0, 1, 1, 0, 0]  # 选择状态23指并拢
 second = [0, 1, 1, 0, 0]
 third = [0, 1, 1, 1, 0]
 fourth = [0, 1, 1, 1, 1]
 closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
+
+Pen_flag = 0
 
 
 class LeftHand(Hand):
@@ -53,8 +53,8 @@ class LeftHand(Hand):
             PEN.penColor = RED
 
     def process(self, img, anotherHand, mainWindow=None):
-
         global Pen_flag
+
         if not self.judgeNull():
             if self.checkSelect() and Pen_flag == 0:
                 print("select")
@@ -81,7 +81,6 @@ class LeftHand(Hand):
                     mainWindow.newBtn()
                 elif lx2 < 150 and ly2 > 600 and ly2 < 700:
                     mainWindow.saveBtn()
-
 
             fingers = self.getFingers()
             if not self.checkSelect() and Pen_flag == 1:
