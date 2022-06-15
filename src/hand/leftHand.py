@@ -16,7 +16,7 @@ left_select = [0, 1, 1, 0, 0]  # 选择状态23指并拢
 second = [0, 1, 1, 0, 0]
 third = [0, 1, 1, 1, 0]
 fourth = [0, 1, 1, 1, 1]
-closeOperation = [1, 1, 1, 1, 1]   #关闭展开栏
+closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
 
 
 class LeftHand(Hand):
@@ -56,7 +56,7 @@ class LeftHand(Hand):
 
         global Pen_flag
         if not self.judgeNull():
-            if self.checkSelect() and Pen_flag==0:
+            if self.checkSelect() and Pen_flag == 0:
                 print("select")
                 # mainWindow.clickButton("select")
                 lid_2, lx2, ly2 = self.getSecond()
@@ -77,32 +77,40 @@ class LeftHand(Hand):
                     mainWindow.colorBoardShow()
                     Pen_flag = 4
                     print("select_Pen_flag = 4")
+                elif lx2 < 150 and ly2 > 400 and ly2 < 500:
+                    mainWindow.newBtn()
+                elif lx2 < 150 and ly2 > 600 and ly2 < 700:
+                    mainWindow.saveBtn()
+
 
             fingers = self.getFingers()
-            if not self.checkSelect() and Pen_flag==1:
+            if not self.checkSelect() and Pen_flag == 1:
                 print("select_Pen_width")
                 # self.selectPen()
-                Pen_flag = 0
                 if operator.eq(fingers, closeOperation):
                     mainWindow.penBoardHide()
+                    Pen_flag = 0
+
 
             elif not self.checkSelect() and Pen_flag == 2:
                 print("select_rubber")
                 # self.selectPen()
-                Pen_flag = 0
+
                 if operator.eq(fingers, closeOperation):
                     mainWindow.closeEraser()
+                    Pen_flag = 0
 
             elif not self.checkSelect() and Pen_flag == 3:
                 print("select_shape")
                 # self.selectPen()
-                Pen_flag = 0
+
                 if operator.eq(fingers, closeOperation):
                     mainWindow.shapeBoardHide()
+                    Pen_flag = 0
 
             elif not self.checkSelect() and Pen_flag == 4:
                 print("select_Pen_color")
                 self.selectPen()
-                Pen_flag = 0
                 if operator.eq(fingers, closeOperation):
                     mainWindow.colorBoardHide()
+                    Pen_flag = 0
