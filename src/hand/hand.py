@@ -25,9 +25,20 @@ def judgeHand(myHand, imgWidth, imgHeight):
 
 
 class Hand:
+    FirstFlag = 0
+    SecondFlag=0
+
     def __init__(self):
         self.tag = None
         self.lms = None
+
+    @classmethod
+    def firstFlag(cls):
+        return cls.FirstFlag
+
+    @classmethod
+    def secondFlag(cls):
+        return cls.SecondFlag
 
     def getFingers(self):
         curveList = []
@@ -46,7 +57,7 @@ class Hand:
 
     # 每只手的流程
     @abstractmethod
-    def process(self, img, anotherHand, mainWindow=None):
+    def process(self, img, mainWindow=None):
         pass
 
     # 判断手是否出现在画面上
