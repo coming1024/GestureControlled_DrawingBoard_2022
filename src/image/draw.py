@@ -25,8 +25,8 @@ def drawCircle(img,x1,y1,x2,y2):
 
 def drawTriangle(img, x1, y1, x2, y2):
     point1=(x2,y2)
-    point2=(x2+40,y2)
-    point3=(x2-40,y2)
+    point2=(x1+40,y1)
+    point3=(x1-40,y1)
     cv2.line(img, point1, point2, PEN.penColor, PEN.penThickness)
     cv2.line(img, point2, point3, PEN.penColor, PEN.penThickness)
     cv2.line(img, point1, point3, PEN.penColor, PEN.penThickness)
