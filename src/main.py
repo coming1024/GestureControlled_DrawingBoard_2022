@@ -16,8 +16,6 @@ from src.ui.BtnFunction.BtnFunction import *
 from src.ui.InterfaceUI_01 import *
 
 
-global Templ_Change
-Templ_Change = 0
 
 CAP = cv2.VideoCapture(0)
 CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, IMG_HEIGHT)
@@ -70,8 +68,8 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
 
         leftHand = HAND_DETECTOR.leftHand
         rightHand = HAND_DETECTOR.rightHand
-        leftHand.process(img, rightHand, self)
-        rightHand.process(img, leftHand)
+        leftHand.process(img, self)
+        rightHand.process(img,self)
 
         img = detectorImage(img, IMG_CANVAS)
         showImage = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_BGR888)
