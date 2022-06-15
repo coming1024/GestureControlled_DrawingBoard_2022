@@ -8,7 +8,7 @@ PenThickness = 10
 PenRadius = 15
 eraseThickness = 30
 
-IMG_HEIGHT = 720  # 720
+IMG_HEIGHT = 1500  # 720
 IMG_WIDTH = 1280
 
 HEIGHT1 = 800

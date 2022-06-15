@@ -15,7 +15,7 @@ import src.ui.GUI素材库.rsc_rc
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1800, 950)
+        MainWindow.resize(1300, 801)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -126,14 +126,14 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
         self.Meau_WT = QtWidgets.QWidget(self.frame_3)
-        self.Meau_WT.setGeometry(QtCore.QRect(0, 40, 141, 691))
+        self.Meau_WT.setGeometry(QtCore.QRect(0, 0, 141, 550))
         self.Meau_WT.setMaximumSize(QtCore.QSize(150, 16777215))
         self.Meau_WT.setStyleSheet("QWidget{\n"
 "\n"
 "    background-color: rgba(97, 97, 97, 255);\n"
 "}\n"
 "QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
+"    font: 17pt;\n"
 "    color:rgba(200, 200,200, 255);\n"
 "    border-left:3px solid rgba(200, 200, 200, 255);\n"
 "    border-radius:9px;\n"
@@ -211,10 +211,12 @@ class Ui_MainWindow(object):
         self.pushButton_9.setObjectName("pushButton_9")
         self.verticalLayout_2.addWidget(self.pushButton_9)
         self.frame_5 = QtWidgets.QFrame(self.frame_3)
-        self.frame_5.setGeometry(QtCore.QRect(140, 40, 141, 691))
+        self.frame_5.setGeometry(QtCore.QRect(140, 0, 141, 550))
         self.frame_5.setStyleSheet("QFrame {\n"
 "background-color:rgb(145, 145, 145);\n"
 "padding-bottom:5px;\n"
+"border-top-right-radius:10px;\n"
+"border-bottom-right-radius:10px;\n"
 "}")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -308,16 +310,18 @@ class Ui_MainWindow(object):
         self.pushButton_15.setIcon(icon13)
         self.pushButton_15.setObjectName("pushButton_15")
         self.frame_6 = QtWidgets.QFrame(self.frame_3)
-        self.frame_6.setGeometry(QtCore.QRect(140, 40, 211, 691))
+        self.frame_6.setGeometry(QtCore.QRect(140, 0, 211, 550))
         self.frame_6.setStyleSheet("QFrame {\n"
 "background-color:rgb(145, 145, 145);\n"
 "padding:5px;\n"
+"border-top-right-radius:10px;\n"
+"border-bottom-right-radius:10px;\n"
 "}")
         self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_6.setObjectName("frame_6")
         self.formLayoutWidget = QtWidgets.QWidget(self.frame_6)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(0, 80, 211, 601))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(0, 80, 211, 464))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -518,26 +522,6 @@ class Ui_MainWindow(object):
         self.pushButton_25.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_25.setObjectName("pushButton_25")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.pushButton_25)
-        self.pushButton_32 = QtWidgets.QPushButton(self.formLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.pushButton_32.sizePolicy().hasHeightForWidth())
-        self.pushButton_32.setSizePolicy(sizePolicy)
-        self.pushButton_32.setStyleSheet("QPushButton{\n"
-"background-color:rgb(242, 242, 242);\n"
-"margin-left:10px;\n"
-"margin-right:10px;\n"
-"border-radius:10px;\n"
-"width:80px;\n"
-"}")
-        self.pushButton_32.setText("")
-        icon24 = QtGui.QIcon()
-        icon24.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-五角星形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_32.setIcon(icon24)
-        self.pushButton_32.setIconSize(QtCore.QSize(70, 70))
-        self.pushButton_32.setObjectName("pushButton_32")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.pushButton_32)
         self.pushButton_28 = QtWidgets.QPushButton(self.formLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -551,51 +535,12 @@ class Ui_MainWindow(object):
 "border-radius:10px;\n"
 "}")
         self.pushButton_28.setText("")
-        icon25 = QtGui.QIcon()
-        icon25.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-六角星形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_28.setIcon(icon25)
+        icon24 = QtGui.QIcon()
+        icon24.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-六角星形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_28.setIcon(icon24)
         self.pushButton_28.setIconSize(QtCore.QSize(70, 70))
         self.pushButton_28.setObjectName("pushButton_28")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.pushButton_28)
-        self.pushButton_33 = QtWidgets.QPushButton(self.formLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.pushButton_33.sizePolicy().hasHeightForWidth())
-        self.pushButton_33.setSizePolicy(sizePolicy)
-        self.pushButton_33.setStyleSheet("QPushButton{\n"
-"background-color:rgb(242, 242, 242);\n"
-"margin-left:10px;\n"
-"margin-right:10px;\n"
-"border-radius:10px;\n"
-"width:80px;\n"
-"}")
-        self.pushButton_33.setText("")
-        icon26 = QtGui.QIcon()
-        icon26.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-十字形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_33.setIcon(icon26)
-        self.pushButton_33.setIconSize(QtCore.QSize(70, 70))
-        self.pushButton_33.setObjectName("pushButton_33")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.pushButton_33)
-        self.pushButton_34 = QtWidgets.QPushButton(self.formLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.pushButton_34.sizePolicy().hasHeightForWidth())
-        self.pushButton_34.setSizePolicy(sizePolicy)
-        self.pushButton_34.setStyleSheet("QPushButton{\n"
-"background-color:rgb(242, 242, 242);\n"
-"margin-left:10px;\n"
-"margin-right:10px;\n"
-"border-radius:10px;\n"
-"}")
-        self.pushButton_34.setText("")
-        icon27 = QtGui.QIcon()
-        icon27.addPixmap(QtGui.QPixmap(":/icons/GUI-rsc/tx-斜十字形.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_34.setIcon(icon27)
-        self.pushButton_34.setIconSize(QtCore.QSize(70, 70))
-        self.pushButton_34.setObjectName("pushButton_34")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.pushButton_34)
         self.label_3 = QtWidgets.QLabel(self.frame_6)
         self.label_3.setGeometry(QtCore.QRect(30, 30, 121, 41))
         self.label_3.setStyleSheet("QLabel {\n"
@@ -617,16 +562,18 @@ class Ui_MainWindow(object):
         self.pushButton_14.setIcon(icon13)
         self.pushButton_14.setObjectName("pushButton_14")
         self.frame_8 = QtWidgets.QFrame(self.frame_3)
-        self.frame_8.setGeometry(QtCore.QRect(140, 40, 141, 691))
+        self.frame_8.setGeometry(QtCore.QRect(140, 0, 141, 550))
         self.frame_8.setStyleSheet("QFrame {\n"
 "background-color:rgb(145, 145, 145);\n"
 "padding-bottom:5px;\n"
+"border-top-right-radius:10px;\n"
+"border-bottom-right-radius:10px;\n"
 "}")
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName("frame_8")
         self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.frame_8)
-        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 141, 681))
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 141, 541))
         self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -671,21 +618,6 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_60.setObjectName("pushButton_60")
         self.verticalLayout_6.addWidget(self.pushButton_60)
-        self.pushButton_61 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.pushButton_61.sizePolicy().hasHeightForWidth())
-        self.pushButton_61.setSizePolicy(sizePolicy)
-        self.pushButton_61.setStyleSheet("QPushButton{\n"
-"background-color:rgb(0, 0, 0);\n"
-"color:rgb(255, 255, 255);\n"
-"margin-left:10px;\n"
-"margin-right:10px;\n"
-"border-radius:10px;\n"
-"}")
-        self.pushButton_61.setObjectName("pushButton_61")
-        self.verticalLayout_6.addWidget(self.pushButton_61)
         self.pushButton_62 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -817,18 +749,26 @@ class Ui_MainWindow(object):
         self.pushButton_70.setObjectName("pushButton_70")
         self.verticalLayout_6.addWidget(self.pushButton_70)
         self.label_2 = QtWidgets.QLabel(self.frame_3)
-        self.label_2.setGeometry(QtCore.QRect(140, 0, 1630, 800))
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 1300, 711))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
         self.label_2.setObjectName("label_2")
+        self.label_4 = QtWidgets.QLabel(self.frame_3)
+        self.label_4.setGeometry(QtCore.QRect(1030, 0, 231, 51))
+        self.label_4.setStyleSheet("QLabel{\n"
+"    font: 17pt;\n"
+"    color:rgba(200, 200,200, 255);\n"
+"}")
+        self.label_4.setObjectName("label_4")
         self.label_2.raise_()
         self.Meau_WT.raise_()
         self.frame_5.raise_()
         self.frame_6.raise_()
         self.frame_8.raise_()
+        self.label_4.raise_()
         self.verticalLayout.addWidget(self.frame_3)
         self.horizontalLayout.addWidget(self.frame)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -880,17 +820,17 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "形状"))
         self.label_9.setText(_translate("MainWindow", "颜色"))
         self.pushButton_60.setText(_translate("MainWindow", "1 白色"))
-        self.pushButton_61.setText(_translate("MainWindow", "2 黑色"))
-        self.pushButton_62.setText(_translate("MainWindow", "3 蓝色"))
-        self.pushButton_63.setText(_translate("MainWindow", "4 绿色"))
-        self.pushButton_64.setText(_translate("MainWindow", "5 黄色"))
-        self.pushButton_65.setText(_translate("MainWindow", "6 红色"))
-        self.pushButton_66.setText(_translate("MainWindow", "7 紫色"))
-        self.pushButton_67.setText(_translate("MainWindow", "8 粉色"))
-        self.pushButton_68.setText(_translate("MainWindow", "9 深蓝"))
-        self.pushButton_69.setText(_translate("MainWindow", "10 嫩绿"))
-        self.pushButton_70.setText(_translate("MainWindow", "11 橘色"))
+        self.pushButton_62.setText(_translate("MainWindow", "2 蓝色"))
+        self.pushButton_63.setText(_translate("MainWindow", "3 绿色"))
+        self.pushButton_64.setText(_translate("MainWindow", "4 黄色"))
+        self.pushButton_65.setText(_translate("MainWindow", "5 红色"))
+        self.pushButton_66.setText(_translate("MainWindow", "6 紫色"))
+        self.pushButton_67.setText(_translate("MainWindow", "7 粉色"))
+        self.pushButton_68.setText(_translate("MainWindow", "8 深蓝"))
+        self.pushButton_69.setText(_translate("MainWindow", "9 嫩绿"))
+        self.pushButton_70.setText(_translate("MainWindow", "10 橘色"))
         self.label_2.setText(_translate("MainWindow", "TextLabel"))
+        self.label_4.setText(_translate("MainWindow", "当前选择："))
         self.actionxinjian.setText(_translate("MainWindow", "新建"))
         self.actiona.setText(_translate("MainWindow", "打开"))
         self.actionbaoqun.setText(_translate("MainWindow", "保存"))
@@ -903,5 +843,4 @@ class Ui_MainWindow(object):
         self.actiont.setText(_translate("MainWindow", "退出"))
         self.actionshux.setText(_translate("MainWindow", "属性"))
         self.actiong.setText(_translate("MainWindow", "关于画板"))
-# import src.ui.res_rc
-# import src.ui.GUI素材库.rsc_rc
+

@@ -55,6 +55,7 @@ class LeftHand(Hand):
         if operator.eq(fingers, first):
             PEN.penThickness = PenThickness1
             Hand.SecondFlag = 1
+            mainWindow.chooseLabel("宽度细")
         elif operator.eq(fingers, second):
             PEN.penThickness = PenThickness2
             Hand.SecondFlag = 2
@@ -152,11 +153,13 @@ class LeftHand(Hand):
 
     def newFile(self):
         fingers = self.getFingers()
+        Hand.FirstFlag = 0
         if self.judgeNull():
             return
         return
 
     def saveFile(self):
+        Hand.FirstFlag = 0
         pass
 
     def process(self, img, hand, mainWindow=None):
@@ -164,23 +167,24 @@ class LeftHand(Hand):
         if not self.judgeNull():
             if self.checkSelect(img) and Hand.FirstFlag == 0:
                 print("select")
+                HEIGHT = 78
                 id2, x2, y2 = self.getSecond()
-                if x2 < 150 and y2 < 100:  # 画笔粗细
+                if x2 < 150 and y2 < HEIGHT:  # 画笔粗细
                     mainWindow.penBoardShow()
                     Hand.FirstFlag = 1
-                elif x2 < 150 and 100 < y2 < 200:  # 橡皮擦
+                elif x2 < 150 and HEIGHT < y2 < 2*HEIGHT:  # 橡皮擦
                     mainWindow.eraserBtn()
                     Hand.FirstFlag = 2
-                elif x2 < 150 and 200 < y2 < 300:  # 形状
+                elif x2 < 150 and 2*HEIGHT < y2 < 3*HEIGHT:  # 形状
                     mainWindow.shapeBoardShow()
                     Hand.FirstFlag = 3
-                elif x2 < 150 and 300 < y2 < 400:  # 画笔颜色
+                elif x2 < 150 and 3*HEIGHT < y2 < 4*HEIGHT:  # 画笔颜色
                     mainWindow.colorBoardShow()
                     Hand.FirstFlag = 4
-                elif x2 < 150 and 400 < y2 < 500:  # 新建
+                elif x2 < 150 and 4*HEIGHT < y2 < 5*HEIGHT:  # 新建
                     mainWindow.newBtn()
                     Hand.FirstFlag = 5
-                elif x2 < 150 and 600 < y2 < 700:  # 保存
+                elif x2 < 150 and 6*HEIGHT < y2 < 7*HEIGHT:  # 保存
                     mainWindow.saveBtn()
                     Hand.FirstFlag = 6
 

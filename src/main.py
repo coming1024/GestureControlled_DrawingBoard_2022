@@ -63,8 +63,8 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
 
         leftHand = HAND_DETECTOR.leftHand
         rightHand = HAND_DETECTOR.rightHand
-        leftHand.process(img,rightHand, self)
-        rightHand.process(img,leftHand,self)
+        leftHand.process(img, rightHand, self)
+        rightHand.process(img, leftHand, self)
 
         detectorImage(img, IMG_CANVAS)
         showImage = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_BGR888)
@@ -316,21 +316,18 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.pushButton_29.clicked.connect(self.selectBtn29)
         self.pushButton_30.clicked.connect(self.selectBtn30)
         self.pushButton_31.clicked.connect(self.selectBtn31)
-        self.pushButton_32.clicked.connect(self.selectBtn32)
-        self.pushButton_33.clicked.connect(self.selectBtn33)
-        self.pushButton_34.clicked.connect(self.selectBtn34)  # 形状14
 
     # 其他点击改按钮颜色
     def selectBtn10(self):
         self.secondBtnBack()
         self.pushButton_10.setStyleSheet("QPushButton{\n"
-"    border-left:7px solid #ffd194;\n"
-"    border-radius:9px;\n"
-"background-color:rgb(242, 242, 242);\n"
-"margin-left:10px;\n"
-"margin-right:10px;\n"
-"border-radius:10px;\n"
-"}\n")
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}\n")
 
     def selectBtn11(self):
         self.secondBtnBack()
@@ -475,47 +472,17 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
                                          "border-radius:10px;\n"
                                          "}\n")
 
-    def selectBtn32(self):
-        self.secondBtnBack()
-        self.pushButton_32.setStyleSheet("QPushButton{\n"
-                                         "    border-left:7px solid #ffd194;\n"
-                                         "    border-radius:9px;\n"
-                                         "background-color:rgb(242, 242, 242);\n"
-                                         "margin-left:10px;\n"
-                                         "margin-right:10px;\n"
-                                         "border-radius:10px;\n"
-                                         "}\n")
-
-    def selectBtn33(self):
-        self.secondBtnBack()
-        self.pushButton_33.setStyleSheet("QPushButton{\n"
-                                         "    border-left:7px solid #ffd194;\n"
-                                         "    border-radius:9px;\n"
-                                         "background-color:rgb(242, 242, 242);\n"
-                                         "margin-left:10px;\n"
-                                         "margin-right:10px;\n"
-                                         "border-radius:10px;\n"
-                                         "}\n")
-
-    def selectBtn34(self):
-        self.secondBtnBack()
-        self.pushButton_34.setStyleSheet("QPushButton{\n"
-                                         "    border-left:7px solid #ffd194;\n"
-                                         "    border-radius:9px;\n"
-                                         "background-color:rgb(242, 242, 242);\n"
-                                         "margin-left:10px;\n"
-                                         "margin-right:10px;\n"
-                                         "border-radius:10px;\n"
-                                         "}\n")
+    def chooseLabel(self, str):
+        self.label_4.setText(str)
 
     # 恢复按钮颜色
     def secondBtnBack(self):
         self.pushButton_10.setStyleSheet("QPushButton{\n"
-"background-color:rgb(242, 242, 242);\n"
-"margin-left:10px;\n"
-"margin-right:10px;\n"
-"border-radius:10px;\n"
-"}")
+                                         "background-color:rgb(242, 242, 242);\n"
+                                         "margin-left:10px;\n"
+                                         "margin-right:10px;\n"
+                                         "border-radius:10px;\n"
+                                         "}")
         self.pushButton_11.setStyleSheet("QPushButton{\n"
                                          "background-color:rgb(242, 242, 242);\n"
                                          "margin-left:10px;\n"
@@ -612,6 +579,7 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
                                          "margin-right:10px;\n"
                                          "border-radius:10px;\n"
                                          "}")
+
 
 if __name__ == "__main__":
     # app = QApplication(sys.argv)
