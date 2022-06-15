@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1241, 801)
@@ -816,7 +817,7 @@ class Ui_MainWindow(object):
         self.pushButton_70.setObjectName("pushButton_70")
         self.verticalLayout_6.addWidget(self.pushButton_70)
         self.label_2 = QtWidgets.QLabel(self.frame_3)
-        self.label_2.setGeometry(QtCore.QRect(140, 0, 1071, 711))
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 1071, 711))
         self.label_2.setObjectName("label_2")
         self.label_2.raise_()
         self.Meau_WT.raise_()
@@ -897,5 +898,23 @@ class Ui_MainWindow(object):
         self.actiont.setText(_translate("MainWindow", "退出"))
         self.actionshux.setText(_translate("MainWindow", "属性"))
         self.actiong.setText(_translate("MainWindow", "关于画板"))
+
+    def penBoardShow(self):
+        self.frame_6.setVisible(False)
+        self.frame_8.setVisible(False)
+    # def penBoardShow(self):
+    #     # self.frame_6.setVisible(False)
+    #     self.frame_8.setVisible(False)
+    #     self.frame_5.setVisible(True)
+    #     self.btnColorBack()
+    #     self.pushButton_4.setStyleSheet("QPushButton{\n"
+    #                                         "    font: 17pt \"仿宋\";\n"
+    #                                         "    color:rgba(200, 200,200, 255);\n"
+    #                                         "    border-left:7px solid #ffd194;\n"
+    #                                         "    border-radius:9px;\n"
+    #                                         "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+    #                                         "}\n")
+
+
 import src.ui.res_rc
 import src.ui.GUI素材库.rsc_rc

@@ -1,6 +1,7 @@
 from abc import abstractmethod
 from src.hand.finger import fingerMap, Finger
 
+
 class HandTag:
     RIGHT = "right"
     LEFT = "left"
@@ -45,7 +46,7 @@ class Hand:
 
     # 每只手的流程
     @abstractmethod
-    def process(self,img,anotherHand,mainWindow=None):
+    def process(self, img, anotherHand, mainWindow=None):
         pass
 
     # 判断手是否出现在画面上
@@ -70,3 +71,6 @@ class Hand:
 
     def getFifth(self):
         return self.getOneFinger(fingerMap.get(Finger.Fifth))
+
+    def judgeSelect(self):  # 判断是否为左手选择状态
+        pass

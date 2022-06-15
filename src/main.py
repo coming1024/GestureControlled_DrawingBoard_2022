@@ -9,10 +9,12 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from src.common.base import IMG_CANVAS
 from src.common.constant import IMG_HEIGHT, IMG_WIDTH
 from src.hand import detector
+
 from src.image.detector import reverseImage, detectorImage
 from src.image.draw import *
 from src.ui.BtnFunction.BtnFunction import *
 from src.ui.InterfaceUI_01 import *
+
 
 global Templ_Change
 Templ_Change = 0
@@ -21,6 +23,7 @@ CAP = cv2.VideoCapture(0)
 CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, IMG_HEIGHT)
 CAP.set(cv2.CAP_PROP_FRAME_WIDTH, IMG_WIDTH)
 HAND_DETECTOR = detector.HandDetector(detectionCon=0.8, trackCon=0.8)
+
 
 def imgInit():
     success, img = CAP.read()
@@ -104,12 +107,12 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.frame_5.setVisible(True)
         self.btnColorBack()
         self.pushButton_4.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:7px solid #ffd194;\n"
-"    border-radius:9px;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"}\n")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    border-radius:9px;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "}\n")
 
     # 形状隐藏
     def shapeBoardHide(self):
@@ -122,12 +125,12 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.frame_6.setVisible(True)
         self.btnColorBack()
         self.pushButton_6.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:7px solid #ffd194;\n"
-"    border-radius:9px;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"}\n")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    border-radius:9px;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "}\n")
 
     # 颜色隐藏
     def colorBoardHide(self):
@@ -140,12 +143,12 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.frame_8.setVisible(True)
         self.btnColorBack()
         self.pushButton_16.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:7px solid #ffd194;\n"
-"    border-radius:9px;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"}\n")
+                                         "    font: 17pt \"仿宋\";\n"
+                                         "    color:rgba(200, 200,200, 255);\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    border-radius:9px;\n"
+                                         "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                         "}\n")
 
     # 点击橡皮
     def eraserBtn(self):
@@ -154,149 +157,153 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         self.frame_5.setVisible(True)
         self.btnColorBack()
         self.pushButton_5.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:7px solid #ffd194;\n"
-"    border-radius:9px;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"}\n")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    border-radius:9px;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "}\n")
+
+    # 隐藏橡皮
+    def closeEraser(self):
+        self.frame_5.setVisible(False)
 
     # 点击保存
     def saveBtn(self):
         self.btnColorBack()
         self.pushButton_9.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:7px solid #ffd194;\n"
-"    border-radius:9px;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"}\n")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    border-radius:9px;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "}\n")
 
     # 点击新建
     def newBtn(self):
         self.btnColorBack()
         self.pushButton_7.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:7px solid #ffd194;\n"
-"    border-radius:9px;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"}\n")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    border-radius:9px;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "}\n")
 
     # 恢复按钮颜色
     def btnColorBack(self):
         self.pushButton_4.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:3px solid rgba(200, 200, 200, 255);\n"
-"    border-radius:9px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:rgba(0,0,0,40);\n"
-"    border-bottom-right-radius:0px;\n"
-"    border-top-right-radius:0px;\n"
-"    }")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:3px solid rgba(200, 200, 200, 255);\n"
+                                        "    border-radius:9px;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "    }\n"
+                                        "QPushButton:pressed{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:rgba(0,0,0,40);\n"
+                                        "    border-bottom-right-radius:0px;\n"
+                                        "    border-top-right-radius:0px;\n"
+                                        "    }")
         self.pushButton_5.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:3px solid rgba(200, 200, 200, 255);\n"
-"    border-radius:9px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:rgba(0,0,0,40);\n"
-"    border-bottom-right-radius:0px;\n"
-"    border-top-right-radius:0px;\n"
-"    }")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:3px solid rgba(200, 200, 200, 255);\n"
+                                        "    border-radius:9px;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "    }\n"
+                                        "QPushButton:pressed{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:rgba(0,0,0,40);\n"
+                                        "    border-bottom-right-radius:0px;\n"
+                                        "    border-top-right-radius:0px;\n"
+                                        "    }")
         self.pushButton_6.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:3px solid rgba(200, 200, 200, 255);\n"
-"    border-radius:9px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:rgba(0,0,0,40);\n"
-"    border-bottom-right-radius:0px;\n"
-"    border-top-right-radius:0px;\n"
-"    }")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:3px solid rgba(200, 200, 200, 255);\n"
+                                        "    border-radius:9px;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "    }\n"
+                                        "QPushButton:pressed{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:rgba(0,0,0,40);\n"
+                                        "    border-bottom-right-radius:0px;\n"
+                                        "    border-top-right-radius:0px;\n"
+                                        "    }")
         self.pushButton_16.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:3px solid rgba(200, 200, 200, 255);\n"
-"    border-radius:9px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:rgba(0,0,0,40);\n"
-"    border-bottom-right-radius:0px;\n"
-"    border-top-right-radius:0px;\n"
-"    }")
+                                         "    font: 17pt \"仿宋\";\n"
+                                         "    color:rgba(200, 200,200, 255);\n"
+                                         "    border-left:3px solid rgba(200, 200, 200, 255);\n"
+                                         "    border-radius:9px;\n"
+                                         "}\n"
+                                         "QPushButton:hover{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                         "    }\n"
+                                         "QPushButton:pressed{\n"
+                                         "    border-left:7px solid #ffd194;\n"
+                                         "    background-color:rgba(0,0,0,40);\n"
+                                         "    border-bottom-right-radius:0px;\n"
+                                         "    border-top-right-radius:0px;\n"
+                                         "    }")
         self.pushButton_7.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:3px solid rgba(200, 200, 200, 255);\n"
-"    border-radius:9px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:rgba(0,0,0,40);\n"
-"    border-bottom-right-radius:0px;\n"
-"    border-top-right-radius:0px;\n"
-"    }")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:3px solid rgba(200, 200, 200, 255);\n"
+                                        "    border-radius:9px;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "    }\n"
+                                        "QPushButton:pressed{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:rgba(0,0,0,40);\n"
+                                        "    border-bottom-right-radius:0px;\n"
+                                        "    border-top-right-radius:0px;\n"
+                                        "    }")
         self.pushButton_8.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:3px solid rgba(200, 200, 200, 255);\n"
-"    border-radius:9px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:rgba(0,0,0,40);\n"
-"    border-bottom-right-radius:0px;\n"
-"    border-top-right-radius:0px;\n"
-"    }")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:3px solid rgba(200, 200, 200, 255);\n"
+                                        "    border-radius:9px;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "    }\n"
+                                        "QPushButton:pressed{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:rgba(0,0,0,40);\n"
+                                        "    border-bottom-right-radius:0px;\n"
+                                        "    border-top-right-radius:0px;\n"
+                                        "    }")
         self.pushButton_9.setStyleSheet("QPushButton{\n"
-"    font: 17pt \"仿宋\";\n"
-"    color:rgba(200, 200,200, 255);\n"
-"    border-left:3px solid rgba(200, 200, 200, 255);\n"
-"    border-radius:9px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    border-left:7px solid #ffd194;\n"
-"    background-color:rgba(0,0,0,40);\n"
-"    border-bottom-right-radius:0px;\n"
-"    border-top-right-radius:0px;\n"
-"    }")
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:3px solid rgba(200, 200, 200, 255);\n"
+                                        "    border-radius:9px;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "    }\n"
+                                        "QPushButton:pressed{\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    background-color:rgba(0,0,0,40);\n"
+                                        "    border-bottom-right-radius:0px;\n"
+                                        "    border-top-right-radius:0px;\n"
+                                        "    }")
 
 
 if __name__ == "__main__":
@@ -305,6 +312,8 @@ if __name__ == "__main__":
     # window.show()
     # sys.exit(app.exec_())
     app = QtWidgets.QApplication(sys.argv)
+    # global UI
     UI = PaintWindow()
     UI.show()
+
     sys.exit(app.exec_())
