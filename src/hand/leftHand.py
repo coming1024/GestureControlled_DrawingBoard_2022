@@ -15,9 +15,9 @@ third = [0, 1, 1, 1, 0]
 fourth = [0, 1, 1, 1, 1]
 closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
 
-
 shapeType = None
 shapeArray = [1, 1, 0, 0, 0]
+
 
 class LeftHand(Hand):
     def __init__(self):
@@ -88,7 +88,9 @@ class LeftHand(Hand):
         fingers = self.getFingers()
         if self.judgeNull():
             return
-        rightHandFingers=hand.getFingers()
+        rightHandFingers = hand.getFingers()
+        x1, y1 = None, None
+        x2, y2 = None, None
         if operator.eq(rightHandFingers, shapeArray):
             id1, x1, y1 = hand.getFirst()
             id2, x2, y2 = hand.getSecond()
@@ -99,17 +101,18 @@ class LeftHand(Hand):
                 shapeType = "rectangle"
             # 圆形
             elif operator.eq(fingers, second):
-                drawCircle(img, x1,y1,x2,y2)
+                drawCircle(img, x1, y1, x2, y2)
                 Hand.SecondFlag = 2
                 shapeType = "circle"
             # 三角形
             elif operator.eq(fingers, third):
-                drawTriangle(img, x1, y1,x2,y2)
+                drawTriangle(img, x1, y1, x2, y2)
                 Hand.SecondFlag = 3
                 shapeType = "triangle"
             elif operator.eq(fingers, fourth):
                 pass
-            elif operator.eq(rightHandFingers, closeOperation):
+        elif operator.eq(rightHandFingers, closeOperation):
+            if not (x1, y1, x2, y2) is None:
                 if shapeType == "rectangle":
                     drawRectangle(IMG_CANVAS, x1, y1, x2, y2)
                 elif shapeType == "circle":
