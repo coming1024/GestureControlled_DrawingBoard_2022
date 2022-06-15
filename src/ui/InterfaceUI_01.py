@@ -9,7 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import src.ui.res_rc
+import src.ui.GUI素材库.rsc_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -902,5 +903,5 @@ class Ui_MainWindow(object):
         self.actiont.setText(_translate("MainWindow", "退出"))
         self.actionshux.setText(_translate("MainWindow", "属性"))
         self.actiong.setText(_translate("MainWindow", "关于画板"))
-import res_rc
-import GUI素材库.rsc_rc
+# import src.ui.res_rc
+# import src.ui.GUI素材库.rsc_rc
