@@ -50,10 +50,13 @@ class LeftHand(Hand):
             return
         if operator.eq(fingers, first):
             PEN.penThickness = PenThickness1
+            Hand.SecondFlag=1
         elif operator.eq(fingers, second):
             PEN.penThickness = PenThickness2
+            Hand.SecondFlag = 2
         elif operator.eq(fingers, third):
             PEN.penThickness = PenThickness3
+            Hand.SecondFlag = 3
         elif operator.eq(fingers, closeOperation):
             mainWindow.penBoardHide()
             Hand.FirstFlag = 0
@@ -73,9 +76,11 @@ class LeftHand(Hand):
             id, x, y = self.getOneFinger(5)
             angle = math.atan((y - y2) / (x - x2))
             drawRectangle(img, x2, y2, Rectangle_Length, Rectangle_Width, angle)
+            Hand.SecondFlag = 1
         # 圆形
         elif operator.eq(fingers, second):
             drawCircle(img,x2,y2,Circle_Radius)
+            Hand.SecondFlag = 2
         elif operator.eq(fingers, third):
             pass
         elif operator.eq(fingers, fourth):
@@ -90,12 +95,16 @@ class LeftHand(Hand):
             return
         if operator.eq(fingers, first):
             PEN.penColor = GREEN
+            Hand.SecondFlag = 1
         elif operator.eq(fingers, second):
             PEN.penColor = PURPLE
+            Hand.SecondFlag = 2
         elif operator.eq(fingers, third):
             PEN.penColor = RED
+            Hand.SecondFlag = 3
         elif operator.eq(fingers, fourth):
             PEN.penColor = GREEN
+            Hand.SecondFlag = 4
         elif operator.eq(fingers, closeOperation):
             mainWindow.colorBoardHide()
             Hand.FirstFlag = 0
@@ -117,21 +126,27 @@ class LeftHand(Hand):
                 id2, x2, y2 = self.getSecond()
                 if x2 < 150 and y2 < 100:  # 画笔粗细
                     mainWindow.penBoardShow()
+                    self.penWidth(mainWindow)
                     Hand.FirstFlag = 1
                 elif x2 < 150 and 100 < y2 < 200:  # 橡皮擦
                     mainWindow.eraserBtn()
+                    self.erase()
                     Hand.FirstFlag = 2
                 elif x2 < 150 and 200 < y2 < 300:  # 形状
                     mainWindow.shapeBoardShow()
+                    self.shape(mainWindow,img)
                     Hand.FirstFlag = 3
                 elif x2 < 150 and 300 < y2 < 400:  # 画笔颜色
                     mainWindow.colorBoardShow()
+                    self.penColor(mainWindow)
                     Hand.FirstFlag = 4
                 elif x2 < 150 and 400 < y2 < 500:  # 新建
                     mainWindow.newBtn()
+                    self.newFile()
                     Hand.FirstFlag = 5
                 elif x2 < 150 and 600 < y2 < 700:  # 保存
                     mainWindow.saveBtn()
+                    self.saveFile()
                     Hand.FirstFlag = 6
 
             elif not self.checkSelect(img):
