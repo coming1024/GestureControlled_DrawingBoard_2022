@@ -1,23 +1,23 @@
 import operator
 
 import cv2
-# import src.main
-# import src.ui.MyMethod as Method
-# from src.main import PaintWindow
-# from src.ui.InterfaceUI_01 import Ui_MainWindow
-from src.common.base import PEN, PENFLAG, SECONDFLAG
-from src.common.constant import GREEN, PURPLE, RED, PenRadius
+
+from src.common.base import IMG_CANVAS
+from src.common.constant import *
 from src.hand.finger import fingerMap
 from src.hand.hand import Hand, HandTag
+from src.image.draw import *
 
 left_select = [0, 1, 1, 0, 0]  # 选择状态23指并拢
+first = [0, 1, 0, 0, 0]
 second = [0, 1, 1, 0, 0]
 third = [0, 1, 1, 1, 0]
 fourth = [0, 1, 1, 1, 1]
 closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
 
-Pen_flag = 0
-
+shapeType = None
+shapeArray = [1, 1, 0, 0, 0]
+x1, y1, x2, y2 = -1, -1, -1, -1
 
 class LeftHand(Hand):
     def __init__(self):
@@ -30,86 +30,168 @@ class LeftHand(Hand):
             return True if self.lms[var][1] < self.lms[var - 1][1] else False
         return True if self.lms[var][2] > self.lms[var - 2][2] else False
 
-    def checkSelect(self):
+    def judgeSelect(self):  # 判断是否为左手选择状态
+        id1, x1, y1 = self.getSecond()
+        id2, x2, y2 = self.getThird()
+        return abs(x1 - x2) <= 80
+
+    def checkSelect(self, img):
         fingers = self.getFingers()
         if fingers is not None and len(fingers) != 0:
             if operator.eq(fingers, left_select) and self.judgeSelect():
+                id2, x2, y2 = self.getSecond()
+                id3, x3, y3 = self.getThird()
+                # 这里画一个矩形
+                cv2.rectangle(img, (x3 - 10, y3 - 10), (x2 + 10, y2 + 10), PEN.penColor, cv2.FILLED)
                 return True
         else:
             return False
 
-    def selectPen(self):
+    def penWidth(self, mainWindow):
         fingers = self.getFingers()
         if self.judgeNull():
             return
-        if operator.eq(fingers, second):
-            print("green")
-            PEN.penColor = GREEN
+        if operator.eq(fingers, first):
+            PEN.penThickness = PenThickness1
+            Hand.SecondFlag = 1
+        elif operator.eq(fingers, second):
+            PEN.penThickness = PenThickness2
+            Hand.SecondFlag = 2
         elif operator.eq(fingers, third):
-            print("purple")
-            PEN.penColor = PURPLE
-        elif operator.eq(fingers, fourth):
-            print("blue")
-            PEN.penColor = RED
+            PEN.penThickness = PenThickness3
+            Hand.SecondFlag = 3
+        elif operator.eq(fingers, closeOperation):
+            mainWindow.penBoardHide()
+            Hand.FirstFlag = 0
 
-    def process(self, img, anotherHand, mainWindow=None):
-        global Pen_flag
+    def erase(self, mainWindow):
+        fingers = self.getFingers()
+        if self.judgeNull():
+            return
+        PEN.penColor = BLACK
+        if operator.eq(fingers, first):
+            PEN.penThickness = EraserThickness1
+            Hand.SecondFlag = 1
+        elif operator.eq(fingers, second):
+            PEN.penThickness = EraserThickness2
+            Hand.SecondFlag = 2
+        elif operator.eq(fingers, third):
+            PEN.penThickness = EraserThickness3
+            Hand.SecondFlag = 3
+        elif operator.eq(fingers, closeOperation):
+            mainWindow.closeEraser()
+            Hand.FirstFlag = 0
+
+    def shape(self, mainWindow, img, hand):
+        global shapeArray
+        fingers = self.getFingers()
+        if self.judgeNull():
+            return
+        rightHandFingers = hand.getFingers()
+        global x1,y1,x2,y2
+
+        # 正方形
+        if operator.eq(fingers, first):
+            Hand.SecondFlag = 1
+        # 圆形
+        elif operator.eq(fingers, second):
+            Hand.SecondFlag = 2
+        # 三角形
+        elif operator.eq(fingers, third):
+            Hand.SecondFlag = 3
+        elif operator.eq(fingers, fourth):
+            pass
+
+        if operator.eq(rightHandFingers, shapeArray):
+            id1, x1, y1 = hand.getFirst()
+            id2, x2, y2 = hand.getSecond()
+            # 正方形
+            if Hand.SecondFlag == 1:
+                drawRectangle(img, x1, y1, x2, y2)
+            # 圆形
+            elif Hand.SecondFlag ==2:
+                drawCircle(img, x1, y1, x2, y2)
+            # 三角形
+            elif Hand.SecondFlag ==3:
+                drawTriangle(img, x1, y1, x2, y2)
+            elif operator.eq(fingers, fourth):
+                pass
+        elif operator.eq(rightHandFingers, closeOperation):
+            if x1!=-1 and y1!=-1 and x2!=-1 and y2!=-1:
+                if Hand.SecondFlag==1:
+                    drawRectangle(IMG_CANVAS, x1, y1, x2, y2)
+                elif Hand.SecondFlag==2:
+                    drawCircle(IMG_CANVAS, x1, y1, x2, y2)
+                elif Hand.SecondFlag==3:
+                    drawTriangle(IMG_CANVAS, x1, y1, x2, y2)
+        if operator.eq(fingers, closeOperation):
+            mainWindow.shapeBoardHide()
+            Hand.FirstFlag = 0
+
+    def penColor(self, mainWindow):
+        fingers = self.getFingers()
+        if self.judgeNull():
+            return
+        if operator.eq(fingers, first):
+            PEN.penColor = GREEN
+            Hand.SecondFlag = 1
+        elif operator.eq(fingers, second):
+            PEN.penColor = PURPLE
+            Hand.SecondFlag = 2
+        elif operator.eq(fingers, third):
+            PEN.penColor = RED
+            Hand.SecondFlag = 3
+        elif operator.eq(fingers, fourth):
+            PEN.penColor = GREEN
+            Hand.SecondFlag = 4
+        elif operator.eq(fingers, closeOperation):
+            mainWindow.colorBoardHide()
+            Hand.FirstFlag = 0
+
+    def newFile(self):
+        fingers = self.getFingers()
+        if self.judgeNull():
+            return
+        return
+
+    def saveFile(self):
+        pass
+
+    def process(self, img, hand, mainWindow=None):
 
         if not self.judgeNull():
-            if self.checkSelect() and Pen_flag == 0:
+            if self.checkSelect(img) and Hand.FirstFlag == 0:
                 print("select")
-                # mainWindow.clickButton("select")
-                lid_2, lx2, ly2 = self.getSecond()
-                cv2.circle(img, (lx2, ly2), PenRadius, PEN.penColor, cv2.FILLED)
-                if lx2 < 150 and ly2 < 100:  # 画笔粗细
+                id2, x2, y2 = self.getSecond()
+                if x2 < 150 and y2 < 100:  # 画笔粗细
                     mainWindow.penBoardShow()
-                    Pen_flag = 1
-                    print("select_Pen_flag = 1")
-                elif lx2 < 150 and ly2 > 100 and ly2 < 200:  # 橡皮擦
+                    Hand.FirstFlag = 1
+                elif x2 < 150 and 100 < y2 < 200:  # 橡皮擦
                     mainWindow.eraserBtn()
-                    Pen_flag = 2
-                    print("select_Pen_flag = 2")
-                elif lx2 < 150 and ly2 > 200 and ly2 < 300:  # 形状
+                    Hand.FirstFlag = 2
+                elif x2 < 150 and 200 < y2 < 300:  # 形状
                     mainWindow.shapeBoardShow()
-                    Pen_flag = 3
-                    print("select_Pen_flag = 3")
-                elif lx2 < 150 and ly2 > 300 and ly2 < 400:  # 画笔颜色
+                    Hand.FirstFlag = 3
+                elif x2 < 150 and 300 < y2 < 400:  # 画笔颜色
                     mainWindow.colorBoardShow()
-                    Pen_flag = 4
-                    print("select_Pen_flag = 4")
-                elif lx2 < 150 and ly2 > 400 and ly2 < 500:
+                    Hand.FirstFlag = 4
+                elif x2 < 150 and 400 < y2 < 500:  # 新建
                     mainWindow.newBtn()
-                elif lx2 < 150 and ly2 > 600 and ly2 < 700:
+                    Hand.FirstFlag = 5
+                elif x2 < 150 and 600 < y2 < 700:  # 保存
                     mainWindow.saveBtn()
+                    Hand.FirstFlag = 6
 
-            fingers = self.getFingers()
-            if not self.checkSelect() and Pen_flag == 1:
-                print("select_Pen_width")
-                # self.selectPen()
-                if operator.eq(fingers, closeOperation):
-                    mainWindow.penBoardHide()
-                    Pen_flag = 0
-
-
-            elif not self.checkSelect() and Pen_flag == 2:
-                print("select_rubber")
-                # self.selectPen()
-
-                if operator.eq(fingers, closeOperation):
-                    mainWindow.closeEraser()
-                    Pen_flag = 0
-
-            elif not self.checkSelect() and Pen_flag == 3:
-                print("select_shape")
-                # self.selectPen()
-
-                if operator.eq(fingers, closeOperation):
-                    mainWindow.shapeBoardHide()
-                    Pen_flag = 0
-
-            elif not self.checkSelect() and Pen_flag == 4:
-                print("select_Pen_color")
-                self.selectPen()
-                if operator.eq(fingers, closeOperation):
-                    mainWindow.colorBoardHide()
-                    Pen_flag = 0
+            elif not self.checkSelect(img):
+                if Hand.FirstFlag == 1:
+                    self.penWidth(mainWindow)
+                elif Hand.FirstFlag == 2:
+                    self.erase(mainWindow)
+                elif Hand.FirstFlag == 3:
+                    self.shape(mainWindow, img, hand)
+                elif Hand.FirstFlag == 4:
+                    self.penColor(mainWindow)
+                elif Hand.FirstFlag == 5:
+                    self.newFile()
+                elif Hand.FirstFlag == 6:
+                    self.saveFile()

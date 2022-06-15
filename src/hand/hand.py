@@ -57,7 +57,7 @@ class Hand:
 
     # 每只手的流程
     @abstractmethod
-    def process(self, img, mainWindow=None):
+    def process(self, img,hand, mainWindow=None):
         pass
 
     # 判断手是否出现在画面上
@@ -83,8 +83,3 @@ class Hand:
     def getFifth(self):
         return self.getOneFinger(fingerMap.get(Finger.Fifth))
 
-    def judgeSelect(self):  # 判断是否为左手选择状态
-        id1, x1, y1 = self.getSecond()
-        id2, x2, y2 = self.getThird()
-        print(abs(x1 - x2))
-        return abs(x1 - x2) <= 80
