@@ -73,4 +73,6 @@ class Hand:
         return self.getOneFinger(fingerMap.get(Finger.Fifth))
 
     def judgeSelect(self):  # 判断是否为左手选择状态
-        pass
+        id1,x1,y1=self.getSecond()
+        id2,x2,y2=self.getThird()
+        return abs(x1-x2)<=30
