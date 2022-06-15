@@ -42,7 +42,7 @@ class RightHand(Hand):
         return True if self.lms[var][2] > self.lms[var - 2][2] else False
 
 
-    def process(self, img, mainWindow=None):
+    def process(self, img,hand,mainWindow=None):
         global prex, prey, index
         # 如果手指出现在屏幕中
         if self.judgeNull():

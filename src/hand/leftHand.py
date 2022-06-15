@@ -1,12 +1,10 @@
-import math
 import operator
 
-import cv2
-from src.common.base import PEN
 from src.common.constant import *
 from src.hand.finger import fingerMap
 from src.hand.hand import Hand, HandTag
 from src.image.draw import *
+from src.main import HAND_DETECTOR
 
 left_select = [0, 1, 1, 0, 0]  # 选择状态23指并拢
 first = [0, 1, 0, 0, 0]
@@ -77,22 +75,25 @@ class LeftHand(Hand):
             Hand.SecondFlag = 3
         elif operator.eq(fingers,closeOperation):
             mainWindow.closeEraser()
+            Hand.FirstFlag=0
 
-    def shape(self, mainWindow, img):
+    def shape(self, mainWindow, img,hand):
         fingers = self.getFingers()
         if self.judgeNull():
             return
         id2, x2, y2 = self.getSecond()
         # 正方形
         if operator.eq(fingers, first):
-            id, x, y = self.getOneFinger(5)
-            angle = math.atan((y - y2) / (x - x2))
-            drawRectangle(img, x2, y2, Rectangle_Length, Rectangle_Width, angle)
-            Hand.SecondFlag = 1
+            if not hand.judgeNull():
+                id, x, y = self.getOneFinger(5)
+                angle = math.atan((y - y2) / (x - x2))
+                drawRectangle(img, x2, y2, Rectangle_Length, Rectangle_Width, angle)
+                Hand.SecondFlag = 1
         # 圆形
         elif operator.eq(fingers, second):
-            drawCircle(img,x2,y2,Circle_Radius)
-            Hand.SecondFlag = 2
+            if not hand.judgeNull():
+                drawCircle(img,x2,y2,Circle_Radius)
+                Hand.SecondFlag = 2
         elif operator.eq(fingers, third):
             pass
         elif operator.eq(fingers, fourth):
@@ -130,7 +131,7 @@ class LeftHand(Hand):
     def saveFile(self):
         pass
 
-    def process(self, img, mainWindow=None):
+    def process(self, img,hand, mainWindow=None):
 
         if not self.judgeNull():
             if self.checkSelect(img) and Hand.FirstFlag == 0:
@@ -161,7 +162,7 @@ class LeftHand(Hand):
                 elif Hand.FirstFlag == 2:
                     self.erase(mainWindow)
                 elif Hand.FirstFlag == 3:
-                    self.shape(mainWindow,img)
+                    self.shape(mainWindow,img,hand)
                 elif Hand.FirstFlag == 4:
                     self.penColor(mainWindow)
                 elif Hand.FirstFlag == 5:
