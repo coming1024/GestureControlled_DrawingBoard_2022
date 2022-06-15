@@ -1,10 +1,12 @@
 import operator
 
+import cv2
+
+from src.common.base import IMG_CANVAS
 from src.common.constant import *
 from src.hand.finger import fingerMap
 from src.hand.hand import Hand, HandTag
 from src.image.draw import *
-from src.main import HAND_DETECTOR
 
 left_select = [0, 1, 1, 0, 0]  # 选择状态23指并拢
 first = [0, 1, 0, 0, 0]
@@ -13,6 +15,9 @@ third = [0, 1, 1, 1, 0]
 fourth = [0, 1, 1, 1, 1]
 closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
 
+
+shapeType = None
+shapeArray = [1, 1, 0, 0, 0]
 
 class LeftHand(Hand):
     def __init__(self):
@@ -37,7 +42,7 @@ class LeftHand(Hand):
                 id2, x2, y2 = self.getSecond()
                 id3, x3, y3 = self.getThird()
                 # 这里画一个矩形
-                cv2.rectangle(img, (x3-10, y3-10), (x2+10, y2 + 10), PEN.penColor, cv2.FILLED)
+                cv2.rectangle(img, (x3 - 10, y3 - 10), (x2 + 10, y2 + 10), PEN.penColor, cv2.FILLED)
                 return True
         else:
             return False
@@ -48,7 +53,7 @@ class LeftHand(Hand):
             return
         if operator.eq(fingers, first):
             PEN.penThickness = PenThickness1
-            Hand.SecondFlag=1
+            Hand.SecondFlag = 1
         elif operator.eq(fingers, second):
             PEN.penThickness = PenThickness2
             Hand.SecondFlag = 2
@@ -59,45 +64,58 @@ class LeftHand(Hand):
             mainWindow.penBoardHide()
             Hand.FirstFlag = 0
 
-    def erase(self,mainWindow):
+    def erase(self, mainWindow):
         fingers = self.getFingers()
         if self.judgeNull():
             return
         PEN.penColor = BLACK
         if operator.eq(fingers, first):
             PEN.penThickness = EraserThickness1
-            Hand.SecondFlag=1
+            Hand.SecondFlag = 1
         elif operator.eq(fingers, second):
             PEN.penThickness = EraserThickness2
             Hand.SecondFlag = 2
         elif operator.eq(fingers, third):
             PEN.penThickness = EraserThickness3
             Hand.SecondFlag = 3
-        elif operator.eq(fingers,closeOperation):
+        elif operator.eq(fingers, closeOperation):
             mainWindow.closeEraser()
-            Hand.FirstFlag=0
+            Hand.FirstFlag = 0
 
-    def shape(self, mainWindow, img,hand):
+    def shape(self, mainWindow, img, hand):
+        global shapeType
+        global shapeArray
         fingers = self.getFingers()
         if self.judgeNull():
             return
-        id2, x2, y2 = self.getSecond()
-        # 正方形
-        if operator.eq(fingers, first):
-            if not hand.judgeNull():
-                id, x, y = self.getOneFinger(5)
-                angle = math.atan((y - y2) / (x - x2))
-                drawRectangle(img, x2, y2, Rectangle_Length, Rectangle_Width, angle)
+        rightHandFingers=hand.getFingers()
+        if operator.eq(rightHandFingers, shapeArray):
+            id1, x1, y1 = hand.getFirst()
+            id2, x2, y2 = hand.getSecond()
+            # 正方形
+            if operator.eq(fingers, first):
+                drawRectangle(img, x1, y1, x2, y2)
                 Hand.SecondFlag = 1
-        # 圆形
-        elif operator.eq(fingers, second):
-            if not hand.judgeNull():
-                drawCircle(img,x2,y2,Circle_Radius)
+                shapeType = "rectangle"
+            # 圆形
+            elif operator.eq(fingers, second):
+                drawCircle(img, x1,y1,x2,y2)
                 Hand.SecondFlag = 2
-        elif operator.eq(fingers, third):
-            pass
-        elif operator.eq(fingers, fourth):
-            pass
+                shapeType = "circle"
+            # 三角形
+            elif operator.eq(fingers, third):
+                drawTriangle(img, x1, y1,x2,y2)
+                Hand.SecondFlag = 3
+                shapeType = "triangle"
+            elif operator.eq(fingers, fourth):
+                pass
+            elif operator.eq(rightHandFingers, closeOperation):
+                if shapeType == "rectangle":
+                    drawRectangle(IMG_CANVAS, x1, y1, x2, y2)
+                elif shapeType == "circle":
+                    drawCircle(IMG_CANVAS, x1, y1, x2, y2)
+                elif shapeType == "triangle":
+                    drawTriangle(IMG_CANVAS, x1, y1, x2, y2)
         elif operator.eq(fingers, closeOperation):
             mainWindow.shapeBoardHide()
             Hand.FirstFlag = 0
@@ -131,7 +149,7 @@ class LeftHand(Hand):
     def saveFile(self):
         pass
 
-    def process(self, img,hand, mainWindow=None):
+    def process(self, img, hand, mainWindow=None):
 
         if not self.judgeNull():
             if self.checkSelect(img) and Hand.FirstFlag == 0:
@@ -162,7 +180,7 @@ class LeftHand(Hand):
                 elif Hand.FirstFlag == 2:
                     self.erase(mainWindow)
                 elif Hand.FirstFlag == 3:
-                    self.shape(mainWindow,img,hand)
+                    self.shape(mainWindow, img, hand)
                 elif Hand.FirstFlag == 4:
                     self.penColor(mainWindow)
                 elif Hand.FirstFlag == 5:
