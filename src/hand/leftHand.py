@@ -19,7 +19,6 @@ shapeType = None
 shapeArray = [1, 1, 0, 0, 0]
 x1, y1, x2, y2 = -1, -1, -1, -1
 
-
 class LeftHand(Hand):
     def __init__(self):
         super().__init__()
@@ -90,21 +89,31 @@ class LeftHand(Hand):
             return
         rightHandFingers = hand.getFingers()
         global x1,y1,x2,y2
+
+        # 正方形
+        if operator.eq(fingers, first):
+            Hand.SecondFlag = 1
+        # 圆形
+        elif operator.eq(fingers, second):
+            Hand.SecondFlag = 2
+        # 三角形
+        elif operator.eq(fingers, third):
+            Hand.SecondFlag = 3
+        elif operator.eq(fingers, fourth):
+            pass
+
         if operator.eq(rightHandFingers, shapeArray):
             id1, x1, y1 = hand.getFirst()
             id2, x2, y2 = hand.getSecond()
             # 正方形
-            if operator.eq(fingers, first):
+            if Hand.SecondFlag == 1:
                 drawRectangle(img, x1, y1, x2, y2)
-                Hand.SecondFlag = 1
             # 圆形
-            elif operator.eq(fingers, second):
+            elif Hand.SecondFlag ==2:
                 drawCircle(img, x1, y1, x2, y2)
-                Hand.SecondFlag = 2
             # 三角形
-            elif operator.eq(fingers, third):
+            elif Hand.SecondFlag ==3:
                 drawTriangle(img, x1, y1, x2, y2)
-                Hand.SecondFlag = 3
             elif operator.eq(fingers, fourth):
                 pass
         elif operator.eq(rightHandFingers, closeOperation):
