@@ -17,6 +17,7 @@ closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
 
 shapeType = None
 shapeArray = [1, 1, 0, 0, 0]
+x1, y1, x2, y2 = -1, -1, -1, -1
 
 
 class LeftHand(Hand):
@@ -83,14 +84,12 @@ class LeftHand(Hand):
             Hand.FirstFlag = 0
 
     def shape(self, mainWindow, img, hand):
-        global shapeType
         global shapeArray
         fingers = self.getFingers()
         if self.judgeNull():
             return
         rightHandFingers = hand.getFingers()
-        x1, y1 = None, None
-        x2, y2 = None, None
+        global x1,y1,x2,y2
         if operator.eq(rightHandFingers, shapeArray):
             id1, x1, y1 = hand.getFirst()
             id2, x2, y2 = hand.getSecond()
@@ -98,28 +97,25 @@ class LeftHand(Hand):
             if operator.eq(fingers, first):
                 drawRectangle(img, x1, y1, x2, y2)
                 Hand.SecondFlag = 1
-                shapeType = "rectangle"
             # 圆形
             elif operator.eq(fingers, second):
                 drawCircle(img, x1, y1, x2, y2)
                 Hand.SecondFlag = 2
-                shapeType = "circle"
             # 三角形
             elif operator.eq(fingers, third):
                 drawTriangle(img, x1, y1, x2, y2)
                 Hand.SecondFlag = 3
-                shapeType = "triangle"
             elif operator.eq(fingers, fourth):
                 pass
         elif operator.eq(rightHandFingers, closeOperation):
-            if not (x1, y1, x2, y2) is None:
-                if shapeType == "rectangle":
+            if x1!=-1 and y1!=-1 and x2!=-1 and y2!=-1:
+                if Hand.SecondFlag==1:
                     drawRectangle(IMG_CANVAS, x1, y1, x2, y2)
-                elif shapeType == "circle":
+                elif Hand.SecondFlag==2:
                     drawCircle(IMG_CANVAS, x1, y1, x2, y2)
-                elif shapeType == "triangle":
+                elif Hand.SecondFlag==3:
                     drawTriangle(IMG_CANVAS, x1, y1, x2, y2)
-        elif operator.eq(fingers, closeOperation):
+        if operator.eq(fingers, closeOperation):
             mainWindow.shapeBoardHide()
             Hand.FirstFlag = 0
 
