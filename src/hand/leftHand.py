@@ -61,10 +61,22 @@ class LeftHand(Hand):
             mainWindow.penBoardHide()
             Hand.FirstFlag = 0
 
-    def erase(self):
+    def erase(self,mainWindow):
+        fingers = self.getFingers()
         if self.judgeNull():
             return
         PEN.penColor = BLACK
+        if operator.eq(fingers, first):
+            PEN.penThickness = EraserThickness1
+            Hand.SecondFlag=1
+        elif operator.eq(fingers, second):
+            PEN.penThickness = EraserThickness2
+            Hand.SecondFlag = 2
+        elif operator.eq(fingers, third):
+            PEN.penThickness = EraserThickness3
+            Hand.SecondFlag = 3
+        elif operator.eq(fingers,closeOperation):
+            mainWindow.closeEraser()
 
     def shape(self, mainWindow, img):
         fingers = self.getFingers()
@@ -126,36 +138,30 @@ class LeftHand(Hand):
                 id2, x2, y2 = self.getSecond()
                 if x2 < 150 and y2 < 100:  # 画笔粗细
                     mainWindow.penBoardShow()
-                    self.penWidth(mainWindow)
                     Hand.FirstFlag = 1
                 elif x2 < 150 and 100 < y2 < 200:  # 橡皮擦
                     mainWindow.eraserBtn()
-                    self.erase()
                     Hand.FirstFlag = 2
                 elif x2 < 150 and 200 < y2 < 300:  # 形状
                     mainWindow.shapeBoardShow()
-                    self.shape(mainWindow,img)
                     Hand.FirstFlag = 3
                 elif x2 < 150 and 300 < y2 < 400:  # 画笔颜色
                     mainWindow.colorBoardShow()
-                    self.penColor(mainWindow)
                     Hand.FirstFlag = 4
                 elif x2 < 150 and 400 < y2 < 500:  # 新建
                     mainWindow.newBtn()
-                    self.newFile()
                     Hand.FirstFlag = 5
                 elif x2 < 150 and 600 < y2 < 700:  # 保存
                     mainWindow.saveBtn()
-                    self.saveFile()
                     Hand.FirstFlag = 6
 
             elif not self.checkSelect(img):
                 if Hand.FirstFlag == 1:
                     self.penWidth(mainWindow)
                 elif Hand.FirstFlag == 2:
-                    self.erase()
+                    self.erase(mainWindow)
                 elif Hand.FirstFlag == 3:
-                    self.penColor(mainWindow)
+                    self.shape(mainWindow,img)
                 elif Hand.FirstFlag == 4:
                     self.penColor(mainWindow)
                 elif Hand.FirstFlag == 5:

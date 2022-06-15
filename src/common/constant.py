@@ -19,6 +19,11 @@ PenThickness1 = 10
 PenThickness2 = 20
 PenThickness3 = 30
 
+
+EraserThickness1=10
+EraserThickness2=20
+EraserThickness3=30
+
 Rectangle_Length = 40
 Rectangle_Width = 40
 
