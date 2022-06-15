@@ -56,25 +56,8 @@ class RightHand(Hand):
             id5, x5, y5 = self.getFifth()
 
             if operator.eq(fingers, drawMode):
-                if mode[index] == "draw":
-                    # 如果食指伸出来了并且中指没有伸出来，就要画圈
-                    cv2.circle(img, (x2, y2), PenRadius, PEN.penColor, cv2.FILLED)
-                    if prex != -1 or prey != -1:
-                        cv2.line(IMG_CANVAS, (x2, y2), (prex, prey), PEN.penColor, PEN.penThickness, cv2.FILLED)
-                elif mode[index] == "erase":
-                    print("erase")
-                    PEN.penColor = BLACK
-                    if prex != -1 or prey != -1:
-                        cv2.line(IMG_CANVAS, (x2, y2), (prex, prey), PEN.penColor, PEN.penThickness, cv2.FILLED)
-                elif mode[index] == "save":
-                    print("save")
-                    imgIndex=0
-                    while os.path.exists(f"result{imgIndex}.jpg"):
-                        imgIndex=imgIndex+1
-
-                    cv2.imwrite(f"result{imgIndex}.jpg",IMG_CANVAS)
-                    print("保存成功")
-                    index=0
-            elif operator.eq(fingers, stop):
-                index = 2
+                # 如果食指伸出来了并且中指没有伸出来，就要画圈
+                cv2.circle(img, (x2, y2), PenRadius, PEN.penColor, cv2.FILLED)
+                if prex != -1 or prey != -1:
+                    cv2.line(IMG_CANVAS, (x2, y2), (prex, prey), PEN.penColor, PEN.penThickness, cv2.FILLED)
             prex, prey = x2, y2
