@@ -1,10 +1,9 @@
 import operator
-import os
 
 import cv2
 
 from src.common.base import PEN, IMG_CANVAS
-from src.common.constant import PenRadius, BLACK
+from src.common.constant import PenRadius
 from src.hand.finger import fingerMap
 from src.hand.hand import Hand, HandTag
 
@@ -29,6 +28,21 @@ index = 0
 #     while True:
 #         cv2.imshow("canvas", IMG_CANVAS)
 #         cv2.waitKey(1)
+
+# def newFile(self):
+#     fingers = self.getFingers()
+#     if self.judgeNull():
+#         return
+#     # 这里弹一个消息框，提示保存成功
+#     return
+#
+#
+# def saveFile(self):
+#     global imgIndex
+#     while os.path.exists(f"result{imgIndex}.jpg"):
+#         imgIndex = imgIndex + 1
+#
+#     cv2.imwrite(f"result{imgIndex}.jpg", IMG_CANVAS)
 
 class RightHand(Hand):
     def __init__(self):

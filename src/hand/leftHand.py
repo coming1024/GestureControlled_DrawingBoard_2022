@@ -1,12 +1,14 @@
 import operator
-
-import cv2
+import os
 
 from src.common.base import IMG_CANVAS
 from src.common.constant import *
 from src.hand.finger import fingerMap
 from src.hand.hand import Hand, HandTag
 from src.image.draw import *
+
+HEIGHT = 78
+LEFT_DIS = 150
 
 left_select = [0, 1, 1, 0, 0]  # 选择状态23指并拢
 first = [0, 1, 0, 0, 0]
@@ -18,6 +20,27 @@ closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
 shapeType = None
 shapeArray = [1, 1, 0, 0, 0]
 x1, y1, x2, y2 = -1, -1, -1, -1
+IMG_INDEX=0
+
+
+def saveFile():
+    global IMG_INDEX
+    while os.path.exists(f"result{IMG_INDEX}.jpg"):
+        IMG_INDEX=IMG_INDEX+1
+
+    cv2.imwrite(f"result{IMG_INDEX}.jpg", IMG_CANVAS)
+    Hand.FirstFlag = 0
+
+
+def openFile():
+    IMG_CANVAS = cv2.imread(OpenPath)
+    IMG_CANVAS=cv2.resize(IMG_CANVAS,(IMG_WIDTH,IMG_HEIGHT))
+    Hand.FirstFlag=0
+
+def newFile():
+    saveFile()
+    IMG_CANVAS = np.zeros((IMG_HEIGHT, IMG_WIDTH, 3), np.uint8)
+    Hand.FirstFlag=0
 
 
 class LeftHand(Hand):
@@ -136,57 +159,49 @@ class LeftHand(Hand):
         if self.judgeNull():
             return
         if operator.eq(fingers, first):
-            PEN.penColor = GREEN
+            PEN.penColor = WHITE
             Hand.SecondFlag = 1
         elif operator.eq(fingers, second):
-            PEN.penColor = PURPLE
+            PEN.penColor = BLUE
             Hand.SecondFlag = 2
         elif operator.eq(fingers, third):
-            PEN.penColor = RED
+            PEN.penColor = GREEN
             Hand.SecondFlag = 3
         elif operator.eq(fingers, fourth):
-            PEN.penColor = GREEN
+            PEN.penColor = YELLOW
             Hand.SecondFlag = 4
         elif operator.eq(fingers, closeOperation):
             mainWindow.colorBoardHide()
             Hand.FirstFlag = 0
 
-    def newFile(self):
-        fingers = self.getFingers()
-        Hand.FirstFlag = 0
-        if self.judgeNull():
-            return
-        return
-
-    def saveFile(self):
-        Hand.FirstFlag = 0
-        pass
-
     def process(self, img, hand, mainWindow=None):
-
+        global LEFT_DIS,HEIGHT
         if not self.judgeNull():
             if self.checkSelect(img) and Hand.FirstFlag == 0:
                 print("select")
-                HEIGHT = 78
                 id2, x2, y2 = self.getSecond()
-                if x2 < 150 and y2 < HEIGHT:  # 画笔粗细
-                    mainWindow.penBoardShow()
-                    Hand.FirstFlag = 1
-                elif x2 < 150 and HEIGHT < y2 < 2*HEIGHT:  # 橡皮擦
-                    mainWindow.eraserBtn()
-                    Hand.FirstFlag = 2
-                elif x2 < 150 and 2*HEIGHT < y2 < 3*HEIGHT:  # 形状
-                    mainWindow.shapeBoardShow()
-                    Hand.FirstFlag = 3
-                elif x2 < 150 and 3*HEIGHT < y2 < 4*HEIGHT:  # 画笔颜色
-                    mainWindow.colorBoardShow()
-                    Hand.FirstFlag = 4
-                elif x2 < 150 and 4*HEIGHT < y2 < 5*HEIGHT:  # 新建
-                    mainWindow.newBtn()
-                    Hand.FirstFlag = 5
-                elif x2 < 150 and 6*HEIGHT < y2 < 7*HEIGHT:  # 保存
-                    mainWindow.saveBtn()
-                    Hand.FirstFlag = 6
+                if x2 < LEFT_DIS:
+                    if y2 < HEIGHT:  # 画笔粗细
+                        mainWindow.penBoardShow()
+                        Hand.FirstFlag = 1
+                    elif HEIGHT < y2 < 2 * HEIGHT:  # 橡皮擦
+                        mainWindow.eraserBtn()
+                        Hand.FirstFlag = 2
+                    elif 2 * HEIGHT < y2 < 3 * HEIGHT:  # 形状
+                        mainWindow.shapeBoardShow()
+                        Hand.FirstFlag = 3
+                    elif 3 * HEIGHT < y2 < 4 * HEIGHT:  # 画笔颜色
+                        mainWindow.colorBoardShow()
+                        Hand.FirstFlag = 4
+                    elif 4 * HEIGHT < y2 < 5 * HEIGHT:  # 新建
+                        mainWindow.newBtn()
+                        Hand.FirstFlag = 5
+                    elif 5 * HEIGHT < y2 < 6 * HEIGHT:  # 打开
+                        # mainWindow.
+                        Hand.FirstFlag = 6
+                    elif 6 * HEIGHT < y2 < 7 * HEIGHT:  # 保存
+                        mainWindow.saveBtn()
+                        Hand.FirstFlag = 7
 
             elif not self.checkSelect(img):
                 if Hand.FirstFlag == 1:
@@ -198,6 +213,8 @@ class LeftHand(Hand):
                 elif Hand.FirstFlag == 4:
                     self.penColor(mainWindow)
                 elif Hand.FirstFlag == 5:
-                    self.newFile()
-                elif Hand.FirstFlag == 6:
-                    self.saveFile()
+                    newFile()
+                elif Hand.FirstFlag==6:
+                    openFile()
+                elif Hand.FirstFlag == 7:
+                    saveFile()
