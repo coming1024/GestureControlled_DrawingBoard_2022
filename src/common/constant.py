@@ -25,4 +25,4 @@ RectangleWidth = 40
 
 CircleRadius = 40
 
-OpenPath = "../init.jpg"
+OpenPath = "D:/GitHub/GestureControlled_DrawingBoard_2022/src/init.jpg"

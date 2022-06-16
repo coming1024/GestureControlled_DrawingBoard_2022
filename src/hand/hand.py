@@ -26,7 +26,7 @@ def judgeHand(myHand, imgWidth, imgHeight):
 
 class Hand:
     FirstFlag = 0
-    SecondFlag=0
+    SecondFlag = 0
 
     def __init__(self):
         self.tag = None
@@ -57,7 +57,7 @@ class Hand:
 
     # 每只手的流程
     @abstractmethod
-    def process(self, img,hand, mainWindow=None):
+    def process(self, img, hand, mainWindow=None):
         pass
 
     # 判断手是否出现在画面上
@@ -82,4 +82,3 @@ class Hand:
 
     def getFifth(self):
         return self.getOneFinger(fingerMap.get(Finger.Fifth))
-

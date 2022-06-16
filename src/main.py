@@ -4,7 +4,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 
 from src.common.base import IMG_CANVAS
-from src.common.constant import IMG_HEIGHT, IMG_WIDTH
+from src.common.constant import IMG_HEIGHT, IMG_WIDTH, OpenPath
 from src.hand import detector
 from src.image.detector import reverseImage, detectorImage
 from src.image.draw import *
@@ -63,8 +63,9 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
 
         leftHand = HAND_DETECTOR.leftHand
         rightHand = HAND_DETECTOR.rightHand
-        leftHand.process(img, rightHand, self)
-        rightHand.process(img, leftHand, self)
+        # IMG_CANVAS = cv2.imread(OpenPath)
+        leftHand.process(img, rightHand,  self)
+        rightHand.process(img, leftHand,  self)
 
         detectorImage(img, IMG_CANVAS)
         showImage = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_BGR888)
@@ -178,6 +179,17 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
     def newBtn(self):
         self.btnColorBack()
         self.pushButton_7.setStyleSheet("QPushButton{\n"
+                                        "    font: 17pt \"仿宋\";\n"
+                                        "    color:rgba(200, 200,200, 255);\n"
+                                        "    border-left:7px solid #ffd194;\n"
+                                        "    border-radius:9px;\n"
+                                        "    background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 255, 255, 50), stop:1 rgba(255, 255, 255, 0))\n"
+                                        "}\n")
+
+    # 点击打开
+    def newOpen(self):
+        self.btnColorBack()
+        self.pushButton_8.setStyleSheet("QPushButton{\n"
                                         "    font: 17pt \"仿宋\";\n"
                                         "    color:rgba(200, 200,200, 255);\n"
                                         "    border-left:7px solid #ffd194;\n"

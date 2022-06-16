@@ -20,27 +20,32 @@ closeOperation = [1, 1, 1, 1, 1]  # 关闭展开栏
 shapeType = None
 shapeArray = [1, 1, 0, 0, 0]
 x1, y1, x2, y2 = -1, -1, -1, -1
-IMG_INDEX=0
+IMG_INDEX = 0
 
 
-def saveFile():
+# IMG = IMG_CANVAS
+
+
+def saveFile(mainwindow=None):
     global IMG_INDEX
     while os.path.exists(f"result{IMG_INDEX}.jpg"):
-        IMG_INDEX=IMG_INDEX+1
+        IMG_INDEX = IMG_INDEX + 1
 
     cv2.imwrite(f"result{IMG_INDEX}.jpg", IMG_CANVAS)
+    mainwindow.btnColorBack()
     Hand.FirstFlag = 0
 
 
 def openFile():
-    IMG_CANVAS = cv2.imread(OpenPath)
-    IMG_CANVAS=cv2.resize(IMG_CANVAS,(IMG_WIDTH,IMG_HEIGHT))
-    Hand.FirstFlag=0
+    # img_canvas = cv2.imread(OpenPath)
+    # cv2.resize(img_canvas, (IMG_WIDTH, IMG_HEIGHT))
+    Hand.FirstFlag = 0
+
 
 def newFile():
     saveFile()
     IMG_CANVAS = np.zeros((IMG_HEIGHT, IMG_WIDTH, 3), np.uint8)
-    Hand.FirstFlag=0
+    Hand.FirstFlag = 0
 
 
 class LeftHand(Hand):
@@ -175,7 +180,7 @@ class LeftHand(Hand):
             Hand.FirstFlag = 0
 
     def process(self, img, hand, mainWindow=None):
-        global LEFT_DIS,HEIGHT
+        global LEFT_DIS, HEIGHT
         if not self.judgeNull():
             if self.checkSelect(img) and Hand.FirstFlag == 0:
                 print("select")
@@ -197,7 +202,7 @@ class LeftHand(Hand):
                         mainWindow.newBtn()
                         Hand.FirstFlag = 5
                     elif 5 * HEIGHT < y2 < 6 * HEIGHT:  # 打开
-                        # mainWindow.
+                        mainWindow.newOpen()
                         Hand.FirstFlag = 6
                     elif 6 * HEIGHT < y2 < 7 * HEIGHT:  # 保存
                         mainWindow.saveBtn()
@@ -214,7 +219,7 @@ class LeftHand(Hand):
                     self.penColor(mainWindow)
                 elif Hand.FirstFlag == 5:
                     newFile()
-                elif Hand.FirstFlag==6:
+                elif Hand.FirstFlag == 6:
                     openFile()
                 elif Hand.FirstFlag == 7:
-                    saveFile()
+                    saveFile(mainWindow)
