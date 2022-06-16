@@ -64,8 +64,8 @@ class PaintWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         leftHand = HAND_DETECTOR.leftHand
         rightHand = HAND_DETECTOR.rightHand
         # IMG_CANVAS = cv2.imread(OpenPath)
-        leftHand.process(img, rightHand,  self)
-        rightHand.process(img, leftHand,  self)
+        leftHand.process(img, rightHand, self)
+        rightHand.process(img, leftHand, self)
 
         detectorImage(img, IMG_CANVAS)
         showImage = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_BGR888)

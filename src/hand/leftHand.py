@@ -1,6 +1,8 @@
 import operator
 import os
 
+from PyQt5.QtWidgets import QMessageBox
+
 from src.common.base import IMG_CANVAS
 from src.common.constant import *
 from src.hand.finger import fingerMap
@@ -34,17 +36,44 @@ def saveFile(mainwindow=None):
     cv2.imwrite(f"result{IMG_INDEX}.jpg", IMG_CANVAS)
     mainwindow.btnColorBack()
     Hand.FirstFlag = 0
+    msg_box = QMessageBox(QMessageBox.Warning, '提示', '文件保存成功！')
+    msg_box.setStandardButtons(QMessageBox.Ok)
+    msg_box.button(QMessageBox.Ok).animateClick(1000)
+    msg_box.exec_()
 
 
-def openFile():
-    # img_canvas = cv2.imread(OpenPath)
-    # cv2.resize(img_canvas, (IMG_WIDTH, IMG_HEIGHT))
+
+def openFile(mainwindow=None):
+    img_canvas = cv2.imread(OpenPath)
+    cv2.resize(img_canvas, (IMG_WIDTH, IMG_HEIGHT))
+    for i in range(IMG_HEIGHT):
+        for j in range(IMG_WIDTH):
+            IMG_CANVAS[i, j] = img_canvas[i, j]
+
+    mainwindow.btnColorBack()
     Hand.FirstFlag = 0
 
 
-def newFile():
-    saveFile()
-    IMG_CANVAS = np.zeros((IMG_HEIGHT, IMG_WIDTH, 3), np.uint8)
+def newFile(mainwindow=None):
+    print("enterNewFile")
+    # saveFile()
+    # IMG_CANVAS = np.zeros((IMG_HEIGHT, IMG_WIDTH, 3), np.uint8)
+    global IMG_INDEX
+    while os.path.exists(f"result{IMG_INDEX}.jpg"):
+        IMG_INDEX = IMG_INDEX + 1
+    cv2.imwrite(f"result{IMG_INDEX}.jpg", IMG_CANVAS)  # 保存
+    msg_box = QMessageBox(QMessageBox.Warning, '提示', '文件保存成功！')
+    msg_box.setStandardButtons(QMessageBox.Ok)
+    msg_box.button(QMessageBox.Ok).animateClick(1000)
+    msg_box.exec_()
+
+    print("saveAlready")
+
+    for i in range(IMG_HEIGHT):
+        for j in range(IMG_WIDTH):
+            IMG_CANVAS[i, j] = 0
+
+    mainwindow.btnColorBack()
     Hand.FirstFlag = 0
 
 
@@ -93,6 +122,7 @@ class LeftHand(Hand):
         elif operator.eq(fingers, closeOperation):
             mainWindow.penBoardHide()
             Hand.FirstFlag = 0
+            Hand.SecondFlag = 0
 
     def erase(self, mainWindow):
         fingers = self.getFingers()
@@ -111,6 +141,7 @@ class LeftHand(Hand):
         elif operator.eq(fingers, closeOperation):
             mainWindow.closeEraser()
             Hand.FirstFlag = 0
+            Hand.SecondFlag = 0
 
     def shape(self, mainWindow, img, hand):
         global shapeArray
@@ -157,6 +188,7 @@ class LeftHand(Hand):
                 Hand.SecondFlag = 0
         if operator.eq(fingers, closeOperation):
             mainWindow.shapeBoardHide()
+            Hand.SecondFlag = 0
             Hand.FirstFlag = 0
 
     def penColor(self, mainWindow):
@@ -177,6 +209,7 @@ class LeftHand(Hand):
             Hand.SecondFlag = 4
         elif operator.eq(fingers, closeOperation):
             mainWindow.colorBoardHide()
+            Hand.SecondFlag = 0
             Hand.FirstFlag = 0
 
     def process(self, img, hand, mainWindow=None):
@@ -218,8 +251,8 @@ class LeftHand(Hand):
                 elif Hand.FirstFlag == 4:
                     self.penColor(mainWindow)
                 elif Hand.FirstFlag == 5:
-                    newFile()
+                    newFile(mainWindow)
                 elif Hand.FirstFlag == 6:
-                    openFile()
+                    openFile(mainWindow)
                 elif Hand.FirstFlag == 7:
                     saveFile(mainWindow)
