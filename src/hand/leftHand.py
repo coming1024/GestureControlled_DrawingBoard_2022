@@ -29,6 +29,7 @@ IMG_INDEX = 0
 
 
 def saveFile(mainwindow=None):
+    mainwindow.chooseLabel("保存文件")
     global IMG_INDEX
     while os.path.exists(f"result{IMG_INDEX}.jpg"):
         IMG_INDEX = IMG_INDEX + 1
@@ -44,6 +45,7 @@ def saveFile(mainwindow=None):
 
 
 def openFile(mainwindow=None):
+    mainwindow.chooseLabel("打开文件")
     img_canvas = cv2.imread(OpenPath)
     cv2.resize(img_canvas, (IMG_WIDTH, IMG_HEIGHT))
     for i in range(IMG_HEIGHT):
@@ -55,6 +57,7 @@ def openFile(mainwindow=None):
 
 
 def newFile(mainwindow=None):
+    mainwindow.chooseLabel("新建文件")
     print("enterNewFile")
     # saveFile()
     # IMG_CANVAS = np.zeros((IMG_HEIGHT, IMG_WIDTH, 3), np.uint8)
@@ -116,9 +119,11 @@ class LeftHand(Hand):
         elif operator.eq(fingers, second):
             PEN.penThickness = PenThickness2
             Hand.SecondFlag = 2
+            mainWindow.chooseLabel("宽度中等")
         elif operator.eq(fingers, third):
             PEN.penThickness = PenThickness3
             Hand.SecondFlag = 3
+            mainWindow.chooseLabel("宽度粗")
         elif operator.eq(fingers, closeOperation):
             mainWindow.penBoardHide()
             Hand.FirstFlag = 0
@@ -132,12 +137,15 @@ class LeftHand(Hand):
         if operator.eq(fingers, first):
             PEN.penThickness = EraserThickness1
             Hand.SecondFlag = 1
+            mainWindow.chooseLabel("宽度细")
         elif operator.eq(fingers, second):
             PEN.penThickness = EraserThickness2
             Hand.SecondFlag = 2
+            mainWindow.chooseLabel("宽度中等")
         elif operator.eq(fingers, third):
             PEN.penThickness = EraserThickness3
             Hand.SecondFlag = 3
+            mainWindow.chooseLabel("宽度粗")
         elif operator.eq(fingers, closeOperation):
             mainWindow.closeEraser()
             Hand.FirstFlag = 0
@@ -154,12 +162,15 @@ class LeftHand(Hand):
         # 正方形
         if operator.eq(fingers, first):
             Hand.SecondFlag = 1
+            mainWindow.chooseLabel("形状矩形")
         # 圆形
         elif operator.eq(fingers, second):
             Hand.SecondFlag = 2
+            mainWindow.chooseLabel("形状圆形")
         # 三角形
         elif operator.eq(fingers, third):
             Hand.SecondFlag = 3
+            mainWindow.chooseLabel("形状三角形")
         elif operator.eq(fingers, fourth):
             pass
 
@@ -198,15 +209,19 @@ class LeftHand(Hand):
         if operator.eq(fingers, first):
             PEN.penColor = WHITE
             Hand.SecondFlag = 1
+            mainWindow.chooseLabel("颜色白色")
         elif operator.eq(fingers, second):
             PEN.penColor = BLUE
             Hand.SecondFlag = 2
+            mainWindow.chooseLabel("颜色蓝色")
         elif operator.eq(fingers, third):
             PEN.penColor = GREEN
             Hand.SecondFlag = 3
+            mainWindow.chooseLabel("颜色绿色")
         elif operator.eq(fingers, fourth):
             PEN.penColor = YELLOW
             Hand.SecondFlag = 4
+            mainWindow.chooseLabel("颜色黄色")
         elif operator.eq(fingers, closeOperation):
             mainWindow.colorBoardHide()
             Hand.SecondFlag = 0
